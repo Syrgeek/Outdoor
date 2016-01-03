@@ -1,0 +1,145 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#0cbcb7"
+        android:orientation="vertical"
+        android:fillViewport="true"
+        tools:context="com.example.hassan.outdoor.Home">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#05716d"
+            android:padding="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/icon"
+                android:id="@+id/profile_button"
+                android:clickable="true"/>
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/messages"
+                android:layout_alignParentRight="true"
+                android:id="@+id/messages_icon"/>
+
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/notifications"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="60dp"
+                android:id="@+id/notifications_icon"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="35dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:hint="Search..."
+                    android:padding="5dp"
+                    android:background="@drawable/edittextstyle"
+                    android:id="@+id/userEmail"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:text="Search"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:background="#0db0b7"
+                    android:layout_margin="3dp"
+                    android:padding="3dp"
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/search_button"/>
+
+            </RelativeLayout>
+
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="100dp"
+                android:hint="Say something..."
+                android:textColorHint="#808080"
+                android:gravity="top"
+                android:padding="10dp"
+                android:background="@drawable/edittextstyle"
+                android:id="@+id/status"/>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="35dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:hint="Location ..."
+                    android:padding="5dp"
+                    android:background="@drawable/edittextstyle"
+                    android:id="@+id/location"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:text="Check-in"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:background="#0db0b7"
+                    android:layout_margin="3dp"
+                    android:padding="3dp"
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/checkin_button"/>
+
+                </RelativeLayout>
+
+            <TextView android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:id="@+id/error_message"
+                android:layout_marginTop="10dp"
+                android:textColor="#FF0000"
+                android:textSize="18sp"
+                android:text=""
+                android:layout_gravity="left"/>
+
+
+        </LinearLayout>
+
+    <ListView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="3dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="15dp"
+        android:id="@+id/checkins_list">
+
+    </ListView>
+
+
+    </LinearLayout>

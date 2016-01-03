@@ -1,0 +1,90 @@
+<ScrollView
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fillViewport="true">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#006167"
+        tools:context="com.example.hassan.outdoor.Login">
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="300dp"
+            android:src="@drawable/head"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp">
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittextstyle"
+                android:textSize="22sp"
+                android:padding="7dp"
+                android:layout_marginTop="7dp"
+                android:hint="E-mail"
+                android:id="@+id/login_email"/>
+
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittextstyle"
+                android:textSize="22sp"
+                android:padding="7dp"
+                android:layout_marginTop="7dp"
+                android:password="true"
+                android:hint="Password"
+                android:id="@+id/login_password"/>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:id="@+id/error_message"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="#FF0000"
+                android:textSize="18sp"
+                android:layout_gravity="center_horizontal"/>
+
+
+        </LinearLayout>
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#0db0b7"
+            android:padding="5dp"
+            android:textSize="18sp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#006167"
+            android:textStyle="bold"
+            android:text="LOG IN"
+            android:id="@+id/login_button"/>
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="I forgot my password"
+            android:textSize="14sp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="30dp"
+            android:textColor="#ffffff"
+            android:background="#006167"
+            android:id="@+id/forget_button"/>
+
+    </LinearLayout>
+
+</ScrollView>
