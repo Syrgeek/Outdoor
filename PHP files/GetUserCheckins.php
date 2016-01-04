@@ -1,7 +1,7 @@
 <?php
 session_start() ;
 include("Connection.php") ;
-$email = $_GET['email'] ;
+$email = $_POST['email'] ;
 $myEmail = $_SESSION['user_email'] ;
 $query = "SELECT * FROM checkin WHERE checkin_user_email = '$email' " ;
 $result = mysqli_query($link, $query) ;
