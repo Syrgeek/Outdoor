@@ -1,9 +1,9 @@
 <?php
 session_start() ;
 include("Connection.php") ;
-$placeName = $_GET['placeName'] ;
+$placeName = $_POST['placeName'] ;
 //echo $placeName ;
-$status = $_GET['status'] ;
+$status = $_POST['status'] ;
 date_default_timezone_set('Africa/Cairo');
 $dt = new DateTime();
 $date = $dt->format('Y-m-d H:i:s');
