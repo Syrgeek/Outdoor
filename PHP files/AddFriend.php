@@ -1,7 +1,7 @@
 <?php
 session_start() ;
 include("Connection.php") ;
-$addedEmail = $_GET['addedEmail'] ;
+$addedEmail = $_POST['addedEmail'] ;
 $email = $_SESSION['user_email'] ;
 
 //echo $email ;
