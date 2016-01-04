@@ -1,7 +1,7 @@
 <?php
 session_start() ;
 include("Connection.php") ;
-$checkinID = $_GET['checkin_id'] ;
+$checkinID = $_POST['checkin_id'] ;
 $email = $_SESSION['user_email'] ;
 
 $response = array() ;
