@@ -1,8 +1,8 @@
 <?php
 session_start() ;
 include("Connection.php") ;
-$email = $_GET['email'] ;
-$message = $_GET['message'] ;
+$email = $_POST['email'] ;
+$message = $_POST['message'] ;
 $senderEmail = $_SESSION['user_email'] ;
 date_default_timezone_set('Africa/Cairo');
 $dt = new DateTime();
