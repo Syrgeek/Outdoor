@@ -1,14 +1,14 @@
 <?php
 session_start() ;
 include("Connection.php") ;
-if($_GET['loginEmail'])
+if($_POST['loginEmail'])
 {
-$query = "SELECT * FROM user WHERE user_email = '".mysqli_real_escape_string($link,$_GET['loginEmail'])."' " ;
+$query = "SELECT * FROM user WHERE user_email = '".mysqli_real_escape_string($link,$_POST['loginEmail'])."' " ;
         $result = mysqli_query($link, $query) ;
         $row = mysqli_fetch_array($result) ;
         if($row)
         {
-$query = "SELECT security_question FROM user WHERE user_email = '".mysqli_real_escape_string($link,$_GET['loginEmail'])."' " ;
+$query = "SELECT security_question FROM user WHERE user_email = '".mysqli_real_escape_string($link,$_POST['loginEmail'])."' " ;
             $result = mysqli_query($link, $query) ;
             $row = mysqli_fetch_array($result) ;
             $response["success"] = 1;
