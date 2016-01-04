@@ -27,7 +27,7 @@ public class DB {
         params.add(new BasicNameValuePair("loginEmail",email));
         String file = "Recover1.php";
 
-        JSONObject json = jsonParser.makeHttpRequest(url + file,"GET", params);
+        JSONObject json = jsonParser.makeHttpRequest(url + file,"POST", params);
 
         Log.d("Create Response", json.toString());
         return json;
@@ -41,7 +41,7 @@ public class DB {
 
         String file = "Recover2.php";
 
-        JSONObject json = jsonParser.makeHttpRequest(url + file,"GET", params);
+        JSONObject json = jsonParser.makeHttpRequest(url + file,"POST", params);
 
         Log.d("Create Response", json.toString());
         return json;
@@ -54,7 +54,7 @@ public class DB {
 
         String file = "Login.php";
 
-        JSONObject json = jsonParser.makeHttpRequest(url + file,"GET", params);
+        JSONObject json = jsonParser.makeHttpRequest(url + file,"POST", params);
 
         Log.d("Create Response", json.toString());
         return json;
@@ -66,7 +66,7 @@ public class DB {
 
         String file = "GetUserCheckins.php";
 
-        JSONObject json = jsonParser.makeHttpRequest(url + file,"GET", params);
+        JSONObject json = jsonParser.makeHttpRequest(url + file,"POST", params);
 
         Log.d("Create Response", json.toString());
         return json;
@@ -79,7 +79,7 @@ public class DB {
 
         String file = "AddMessage.php";
 
-        JSONObject json = jsonParser.makeHttpRequest(url + file,"GET", params);
+        JSONObject json = jsonParser.makeHttpRequest(url + file,"POST", params);
 
         Log.d("Create Response", json.toString());
     }
@@ -89,7 +89,7 @@ public class DB {
 
         String file = "GetMyCheckins.php";
 
-        JSONObject json = jsonParser.makeHttpRequest(url + file,"GET", params);
+        JSONObject json = jsonParser.makeHttpRequest(url + file,"POST", params);
 
         Log.d("Create Response", json.toString());
         return json;
@@ -100,7 +100,7 @@ public class DB {
 
         String file = "GetFriendsCheckin.php";
 
-        JSONObject json = jsonParser.makeHttpRequest(url + file,"GET", params);
+        JSONObject json = jsonParser.makeHttpRequest(url + file,"POST", params);
 
         Log.d("Create Response", json.toString());
         return json;
@@ -113,7 +113,7 @@ public class DB {
 
         String file = "AddCheckin.php";
 
-        JSONObject json = jsonParser.makeHttpRequest(url + file,"GET", params);
+        JSONObject json = jsonParser.makeHttpRequest(url + file,"POST", params);
 
         Log.d("Create Response", json.toString());
         return json;
@@ -125,7 +125,7 @@ public class DB {
 
         String file = "AddLike.php";
 
-        JSONObject json = jsonParser.makeHttpRequest(url + file,"GET", params);
+        JSONObject json = jsonParser.makeHttpRequest(url + file,"POST", params);
 
         Log.d("Create Response", json.toString());
 
@@ -138,7 +138,7 @@ public class DB {
 
         String file = "AddFriend.php";
 
-        JSONObject json = jsonParser.makeHttpRequest(url + file,"GET", params);
+        JSONObject json = jsonParser.makeHttpRequest(url + file,"POST", params);
 
         Log.d("Create Response", json.toString());
 
@@ -158,7 +158,7 @@ public class DB {
         // getting JSON Object
         // Note that create product url accepts POST method
 
-        JSONObject json = jsonParser.makeHttpRequest(url + file,"GET", params);
+        JSONObject json = jsonParser.makeHttpRequest(url + file,"POST", params);
 
         //if(json == null)
           //  return false;
@@ -178,7 +178,7 @@ public class DB {
 
         String file = "GetUserMessages.php";
 
-        JSONObject json = jsonParser.makeHttpRequest(url + file,"GET", params);
+        JSONObject json = jsonParser.makeHttpRequest(url + file,"POST", params);
 
         Log.d("Create Response", json.toString());
         return json;
