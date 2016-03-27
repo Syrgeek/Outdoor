@@ -42,7 +42,7 @@ public class Register extends ActionBarActivity {
     EditText inputAnswer;
     EditText inputEmail2;
     TextView errorMessage;
-
+    static String username = "",password = "",email = "";
 
 
     //private static String url_create_account = "http://outdoor.site88.net/create_account2.php";
@@ -80,9 +80,9 @@ public class Register extends ActionBarActivity {
 
             @Override
             public void onClick(View view) {
-                String email = inputEmail.getText().toString();
-                String username = inputName.getText().toString();
-                String password = inputPassword.getText().toString();
+                email = inputEmail.getText().toString();
+                username = inputName.getText().toString();
+                password = inputPassword.getText().toString();
                 String question = inputQuestion.getText().toString();
                 String answer = inputAnswer.getText().toString();
                 String email2 = inputEmail2.getText().toString();
@@ -144,13 +144,10 @@ public class Register extends ActionBarActivity {
 
             // Building Parameters
             if(success == 1){
-
+                System.myEmail = email;
+                System.PASSWORD = password;
+                System.USERNAME = username;
                 Intent i = new Intent(getApplicationContext(), Welcome.class);
-                try {
-                    i.putExtra("username",json.getString("message"));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
                 startActivity(i);
                 // closing this screen
                 finish();

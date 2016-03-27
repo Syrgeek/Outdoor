@@ -6,6 +6,7 @@ import org.json.JSONObject;
 public class System {
     public DB db = new DB();
     public static String myEmail = "";
+    public static String USERNAME = "",PASSWORD = "";
 
     public void sendnotification(Message not){
 
@@ -28,9 +29,15 @@ public class System {
         return json;
     }
 
-    public JSONObject addFriend(String... strings) {
+    public JSONObject Follow(String... strings) {
         String userEmail = strings[0];
-        JSONObject json = db.addFriend(userEmail);
+        JSONObject json = db.Follow(userEmail);
+        return json;
+    }
+
+    public JSONObject Unfollow(String... strings) {
+        String userEmail = strings[0];
+        JSONObject json = db.Unfollow(userEmail);
         return json;
     }
 
@@ -55,7 +62,7 @@ public class System {
         String status = strings[0];
         String location = strings[1];
 
-        JSONObject json =  db.checkIn(status,location);
+        JSONObject json =  db.checkIn(status, location);
         return json;
     }
 
@@ -63,7 +70,7 @@ public class System {
         String email = strings[0];
         String password = strings[1];
 
-        JSONObject json =  db.login(email,password);
+        JSONObject json =  db.login(email, password);
 
         return json;
     }
@@ -99,7 +106,7 @@ public class System {
         String email = strings[0];
         String ans = strings[1];
 
-        JSONObject json =  db.answer(email,ans);
+        JSONObject json =  db.answer(email, ans);
         return json;
     }
 
@@ -145,6 +152,11 @@ public class System {
 
     public JSONObject getInbox() {
         JSONObject json = db.getInbox();
+        return json;
+    }
+
+    public JSONObject getFollowers() {
+        JSONObject json = db.getFollowers();
         return json;
     }
 }

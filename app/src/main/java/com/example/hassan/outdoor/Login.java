@@ -86,7 +86,7 @@ public class Login extends ActionBarActivity {
         protected String doInBackground(String... strings) {
 
             JSONObject json1 = new System().login(strings);
-            JSONObject json2 = new System().getProfile(strings);
+
 
             int success = 0;
 
@@ -100,7 +100,10 @@ public class Login extends ActionBarActivity {
                 Intent i = new Intent(getApplicationContext(), Profile.class);
                 try {
                     System.myEmail = strings[0];
-                    i.putExtra("username",json1.getString("message"));
+                    System.PASSWORD = strings[1];
+                    System.USERNAME = json1.getString("name");
+                    //i.putExtra("username",json1.getString("name"));
+                    JSONObject json2 = new System().getProfile(System.myEmail);
                     if(json2 != null)
                         i.putExtra("jsonObject",json2.toString());
                     else {

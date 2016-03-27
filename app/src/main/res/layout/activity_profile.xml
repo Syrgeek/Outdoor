@@ -50,20 +50,42 @@
             android:layout_height="wrap_content"
             android:background="#08928e">
 
-            <Button
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
-                android:background="#0db0b7"
-                android:padding="5dp"
-                android:textSize="18sp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:textColor="#006167"
-                android:textStyle="bold"
-                android:text="Inbox"
-                android:id="@+id/inbox_button"/>
+                android:orientation="vertical">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:background="#0db0b7"
+                    android:textSize="18sp"
+                    android:textColor="#006167"
+                    android:textStyle="bold"
+                    android:text="Inbox"
+                    android:id="@+id/inbox_button"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="18sp"
+                    android:background="#0db0b7"
+                    android:textColor="#006167"
+                    android:textStyle="bold"
+                    android:text="Followers"
+                    android:id="@+id/followers_button"/>
+
+
+
+            </LinearLayout>
 
             <Button
                 android:layout_width="wrap_content"

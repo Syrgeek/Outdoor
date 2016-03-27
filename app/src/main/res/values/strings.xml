@@ -17,5 +17,6 @@
     <string name="title_activity_message">Message</string>
     <string name="title_activity_inbox">Inbox</string>
     <string name="title_activity_send_message">SendMessage</string>
+    <string name="title_activity_followers">Followers</string>
 
 </resources>

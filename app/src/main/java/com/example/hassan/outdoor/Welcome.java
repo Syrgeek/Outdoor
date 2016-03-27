@@ -20,7 +20,7 @@ public class Welcome extends ActionBarActivity {
         Bundle bundle = getIntent().getExtras();
         if(bundle != null) {
             TextView tv = (TextView) findViewById(R.id.welcome);
-            tv.append(bundle.getString("username"));
+            tv.append(System.USERNAME);
         }
 
         Button btnGo = (Button) findViewById(R.id.go_button);

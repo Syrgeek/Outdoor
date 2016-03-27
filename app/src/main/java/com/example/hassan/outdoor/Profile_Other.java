@@ -68,9 +68,9 @@ public class Profile_Other extends ActionBarActivity {
                 tv.setText(json.getString("username"));
                 int friends = json.getInt("is_friend");
                 if(friends == 1){
-                    addFriend.setText("Unfriend");
+                    addFriend.setText("Ufollow");
                 }else {
-                    addFriend.setText("Add Friend");
+                    addFriend.setText("Follow");
                 }
                 final JSONArray jar = json.getJSONArray("array");
 
@@ -97,11 +97,14 @@ public class Profile_Other extends ActionBarActivity {
         addFriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new FriendTask().execute("test94@gmail.com");
-                if (addFriend.getText().equals("Add Friend"))
-                    addFriend.setText("Unfriend");
-                else
-                    addFriend.setText("Add Friend");
+                if (addFriend.getText().equals("Follow")) {
+                    new FollowTask().execute(userEmail);
+                    addFriend.setText("Ufollow");
+                }
+                else {
+                    new UnfollowTask().execute(userEmail);
+                    addFriend.setText("Follow");
+                }
                 addFriend.refreshDrawableState();
             }
         });
@@ -212,7 +215,7 @@ public class Profile_Other extends ActionBarActivity {
         }
 
     }
-    class FriendTask extends AsyncTask<String, String, String> {
+    class FollowTask extends AsyncTask<String, String, String> {
 
         /**
          * Before starting background thread Show Progress Dialog
@@ -232,7 +235,7 @@ public class Profile_Other extends ActionBarActivity {
          * */
         protected String doInBackground(String... strings) {
 
-            JSONObject json = new System().addFriend(strings);
+            JSONObject json = new System().Follow(strings);
             return null;
         }
 
@@ -248,6 +251,41 @@ public class Profile_Other extends ActionBarActivity {
 
     }
 
+    class UnfollowTask extends AsyncTask<String, String, String> {
+
+        /**
+         * Before starting background thread Show Progress Dialog
+         * */
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pDialog = new ProgressDialog(Profile_Other.this);
+            pDialog.setMessage("Please wait..");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
+        }
+
+        /**
+         * Creating account
+         * */
+        protected String doInBackground(String... strings) {
+
+            JSONObject json = new System().Unfollow(strings);
+            return null;
+        }
+
+        /**
+         * After completing background task Dismiss the progress dialog
+         * **/
+        protected void onPostExecute(String file_url) {
+            // dismiss the dialog once done
+            pDialog.dismiss();
+            // Intent back = new Intent(getApplicationContext(),MainActivity.class);
+            // startActivity(back);
+        }
+
+    }
 
 
     @Override

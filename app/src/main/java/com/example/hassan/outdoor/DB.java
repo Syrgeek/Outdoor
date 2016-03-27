@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class DB {
 
-    private static final String url = "http://outdoor.netne.net/";
+    private static final String url = "http://outdoorbackend-outdoor2.rhcloud.com/Outdoor-Backend/rest/";
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
     JSONParser jsonParser = new JSONParser();
@@ -52,9 +52,9 @@ public class DB {
         params.add(new BasicNameValuePair("loginEmail",email));
         params.add(new BasicNameValuePair("loginPassword", password));
 
-        String file = "Login.php";
+        String service = "login";
 
-        JSONObject json = jsonParser.makeHttpRequest(url + file,"POST", params);
+        JSONObject json = jsonParser.makeHttpRequest(url + service,"POST", params);
 
         Log.d("Create Response", json.toString());
         return json;
@@ -62,11 +62,12 @@ public class DB {
 
     public JSONObject getProfile(String email) {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
-        params.add(new BasicNameValuePair("email",email));
+        params.add(new BasicNameValuePair("my_email",System.myEmail));
+        params.add(new BasicNameValuePair("his_email",email));
 
-        String file = "GetUserCheckins.php";
+        String service = "getProfile";
 
-        JSONObject json = jsonParser.makeHttpRequest(url + file,"POST", params);
+        JSONObject json = jsonParser.makeHttpRequest(url + service,"POST", params);
 
         Log.d("Create Response", json.toString());
         return json;
@@ -87,9 +88,9 @@ public class DB {
     public JSONObject getMyProfile() {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
 
-        String file = "GetMyCheckins.php";
+        String service = "getMyCheckins";
 
-        JSONObject json = jsonParser.makeHttpRequest(url + file,"POST", params);
+        JSONObject json = jsonParser.makeHttpRequest(url + service,"POST", params);
 
         Log.d("Create Response", json.toString());
         return json;
@@ -132,13 +133,28 @@ public class DB {
         return json;
     }
 
-    public JSONObject addFriend(String userEmail) {
+    public JSONObject Follow(String userEmail) {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
-        params.add(new BasicNameValuePair("addedEmail",userEmail));
+        params.add(new BasicNameValuePair("email",System.myEmail));
+        params.add(new BasicNameValuePair("friendEmail",userEmail));
 
-        String file = "AddFriend.php";
+        String service = "follow";
 
-        JSONObject json = jsonParser.makeHttpRequest(url + file,"POST", params);
+        JSONObject json = jsonParser.makeHttpRequest(url + service,"POST", params);
+
+        Log.d("Create Response", json.toString());
+
+        return json;
+    }
+
+    public JSONObject Unfollow(String userEmail) {
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("email",System.myEmail));
+        params.add(new BasicNameValuePair("friendEmail",userEmail));
+
+        String service = "unfollow";
+
+        JSONObject json = jsonParser.makeHttpRequest(url + service,"POST", params);
 
         Log.d("Create Response", json.toString());
 
@@ -154,11 +170,11 @@ public class DB {
         params.add(new BasicNameValuePair("securityAnswer", u.getAnswer()));
         params.add(new BasicNameValuePair("altEmail", u.getEmail2()));
 
-        String file = "Signup.php";
+        String service = "signup";
         // getting JSON Object
         // Note that create product url accepts POST method
 
-        JSONObject json = jsonParser.makeHttpRequest(url + file,"POST", params);
+        JSONObject json = jsonParser.makeHttpRequest(url + service,"POST", params);
 
         //if(json == null)
           //  return false;
@@ -179,6 +195,17 @@ public class DB {
         String file = "GetUserMessages.php";
 
         JSONObject json = jsonParser.makeHttpRequest(url + file,"POST", params);
+
+        Log.d("Create Response", json.toString());
+        return json;
+    }
+
+    public JSONObject getFollowers() {
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("email",System.myEmail));
+        String service = "getFollowers";
+
+        JSONObject json = jsonParser.makeHttpRequest(url + service,"POST", params);
 
         Log.d("Create Response", json.toString());
         return json;

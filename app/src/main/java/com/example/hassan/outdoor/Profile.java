@@ -41,7 +41,7 @@ public class Profile extends ActionBarActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),Login.class);
+                Intent intent = new Intent(getApplicationContext(), Login.class);
                 startActivity(intent);
                 finish();
             }
@@ -64,6 +64,14 @@ public class Profile extends ActionBarActivity {
             }
         });
 
+        Button followers = (Button) findViewById(R.id.followers_button);
+        followers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new FollowersTask().execute();
+            }
+        });
+
         checkInsList = (ListView) findViewById(R.id.checkins_list);
 
         Bundle bundle = getIntent().getExtras();
@@ -80,13 +88,13 @@ public class Profile extends ActionBarActivity {
 
                 JSONObject json = new JSONObject(jsonString);
                 TextView tv = (TextView) findViewById(R.id.username);
-                tv.setText(json.getString("username"));
+                tv.setText(System.USERNAME);
                 String arr = json.getString("array");
                 JSONArray jar = new JSONArray(arr);
 
                 for(int i=0; i<jar.length();++i) {
                     JSONObject jobj = jar.getJSONObject(i);
-                    String username = jobj.getString("username");
+                    String username = System.USERNAME;
                     String place = jobj.getString("checkin_place_name");
                     String status = jobj.getString("status");
                     String date = jobj.getString("date");
@@ -174,6 +182,50 @@ public class Profile extends ActionBarActivity {
             JSONObject json = new System().getInbox();
 
             Intent i = new Intent(getApplicationContext(), Inbox.class);
+            if(json != null)
+                i.putExtra("jsonObject",json.toString());
+            else
+                return null;
+
+            startActivity(i);
+            // closing this screen
+            return null;
+        }
+
+        /**
+         * After completing background task Dismiss the progress dialog
+         * **/
+        protected void onPostExecute(String file_url) {
+            // dismiss the dialog once done
+            pDialog.dismiss();
+            // Intent back = new Intent(getApplicationContext(),MainActivity.class);
+            // startActivity(back);
+        }
+
+    }
+    class FollowersTask extends AsyncTask<String, String, String> {
+
+        /**
+         * Before starting background thread Show Progress Dialog
+         * */
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pDialog = new ProgressDialog(Profile.this);
+            pDialog.setMessage("Loading...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
+        }
+
+        /**
+         * Creating account
+         * */
+        protected String doInBackground(String... strings) {
+
+            JSONObject json = new System().getFollowers();
+
+            Intent i = new Intent(getApplicationContext(), Followers.class);
             if(json != null)
                 i.putExtra("jsonObject",json.toString());
             else
