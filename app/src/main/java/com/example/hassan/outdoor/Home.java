@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,7 +22,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
-
 
 public class Home extends ActionBarActivity {
 
@@ -101,6 +101,7 @@ public class Home extends ActionBarActivity {
 
                 for(int i=0; i<jar.length();++i) {
                     JSONObject jobj = jar.getJSONObject(i);
+
                     String username = jobj.getString("username");
                     String place = jobj.getString("checkin_place_name");
                     String status = jobj.getString("status");
@@ -205,6 +206,7 @@ public class Home extends ActionBarActivity {
 
             // Building Parameters
                     if(json != null) {
+                        //Log.d("Create Home", json.toString());
                         Intent i = new Intent(getApplicationContext(),Profile.class);
                         i.putExtra("jsonObject",json.toString());
                         startActivity(i);

@@ -90,6 +90,7 @@ public class Profile extends ActionBarActivity {
                 TextView tv = (TextView) findViewById(R.id.username);
                 tv.setText(System.USERNAME);
                 String arr = json.getString("array");
+
                 JSONArray jar = new JSONArray(arr);
 
                 for(int i=0; i<jar.length();++i) {

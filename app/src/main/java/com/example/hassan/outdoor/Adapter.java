@@ -90,14 +90,31 @@ public class Adapter extends BaseAdapter {
             else
                 holder.like.setText("Like");
 
+            convertView.setTag(holder);
         } else {
             holder = (Holder) convertView.getTag();
+            String date = list.get(position).getDate();
+            String place = list.get(position).getPlace();
+            String username = list.get(position).getUsername();
+            String status = list.get(position).getStatus();
+            String likes = Integer.toString(list.get(position).getLikes());
+            int liked = list.get(position).getIf_liked();
+
+            holder.date.setText(date);
+            holder.username.setText(username);
+            holder.status.setText(status);
+            holder.place.setText(place);
+            holder.likes.setText(likes);
+            if(liked == 1)
+                holder.like.setText("Unlike");
+            else
+                holder.like.setText("Like");
+
         }
 
         final TextView like = (TextView) convertView.findViewById(R.id.like_button);
         final TextView likes = (TextView) convertView.findViewById(R.id.likes);
         like.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 int checkId = list.get(position).getId();
@@ -113,7 +130,7 @@ public class Adapter extends BaseAdapter {
                 } else {
                     like.setText("Unlike");
                     likes.setText(Integer.toString(num+1));
-                    list.get(position).setLikes(num + 1);
+                    list.get(position).setLikes(num+1);
                     list.get(position).setIf_liked(1);
                     like.refreshDrawableState();
                     likes.refreshDrawableState();

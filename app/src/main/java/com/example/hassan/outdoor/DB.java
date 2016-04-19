@@ -103,7 +103,7 @@ public class DB {
 
         JSONObject json = jsonParser.makeHttpRequest(url + file,"POST", params);
 
-        Log.d("Create Response", json.toString());
+        Log.d("Create Home", json.toString());
         return json;
     }
 
