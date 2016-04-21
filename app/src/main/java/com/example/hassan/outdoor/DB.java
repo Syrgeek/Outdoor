@@ -73,6 +73,19 @@ public class DB {
         return json;
     }
 
+    public JSONObject getNearestLocation(String lat, String lon) {
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("lat", lat));
+        params.add(new BasicNameValuePair("long", lon));
+
+        String service = "getNearestLocation";
+
+        JSONObject json = jsonParser.makeHttpRequest(url + service,"POST", params);
+
+        Log.d("Create Response", json.toString());
+        return json;
+    }
+
     public void sendMessage(String receiver,String message) {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("email",receiver));

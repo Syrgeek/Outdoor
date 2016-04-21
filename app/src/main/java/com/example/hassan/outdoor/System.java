@@ -82,6 +82,13 @@ public class System {
         return json;
     }
 
+    public JSONObject getNearestLocation(String... strings) {
+
+        JSONObject json = db.getNearestLocation(strings[0], strings[1]);
+
+
+        return json;
+    }
     public JSONObject getMyProfile() {
 
         JSONObject json = db.getMyProfile();

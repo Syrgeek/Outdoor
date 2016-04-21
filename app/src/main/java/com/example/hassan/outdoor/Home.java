@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,6 +33,7 @@ public class Home extends ActionBarActivity {
     EditText inputEmail;
     TextView errorMessage;
     ListView checkInsList;
+    String jsonString;
 
 
     @Override
@@ -41,10 +43,20 @@ public class Home extends ActionBarActivity {
         setContentView(R.layout.activity_home);
 
         inputStatus = (EditText) findViewById(R.id.status);
-        inputLocation = (EditText) findViewById(R.id.location);
         inputEmail = (EditText) findViewById(R.id.userEmail);
         errorMessage = (TextView) findViewById(R.id.error_message);
 
+
+        inputLocation = (EditText) findViewById(R.id.location);
+        inputLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(Home.this, CheckinLocation.class);
+                it.putExtra("json", jsonString); // Shouldn't be done .. will be deleted after we handle it with SQLLite
+                it.putExtra("status", inputStatus.getText().toString());
+                startActivity(it);
+            }
+        });
         ImageView btnProfile = (ImageView) findViewById(R.id.profile_button);
         btnProfile.setOnClickListener(new View.OnClickListener() {
 
@@ -57,9 +69,20 @@ public class Home extends ActionBarActivity {
         checkInsList = (ListView) findViewById(R.id.checkins_list);
 
         Bundle bundle = getIntent().getExtras();
-
         if(bundle != null) {
-            errorMessage.setText(bundle.getString("error"));
+
+            String error = bundle.getString("error");
+            if(error != null) {
+                errorMessage.setText(bundle.getString("error"));
+            }
+            String status = bundle.getString("status"); // modify later
+            if(status != null)
+                inputStatus.setText(status);
+
+            if(getIntent().hasExtra("lat")){
+                new LocationTask().execute(bundle.getDouble("lat")+ "", bundle.getDouble("long")+"");
+            }
+
         }
 
         // Create button
@@ -85,12 +108,13 @@ public class Home extends ActionBarActivity {
             public void onClick(View view) {
                 String userEmail = inputEmail.getText().toString();
                 new ProfileTask().execute(userEmail);
-
             }
         });
 
         if(bundle != null) {
-            String jsonString = bundle.getString("jsonObject");
+            jsonString = bundle.getString("jsonObject");
+
+            if(jsonString != null)
             try {
                 List<Checkin> list = new ArrayList<Checkin>();
                 //list.add(new Checkin("Hassan","Cairo","Feeling good","27/12/2015",12,1));
@@ -104,13 +128,13 @@ public class Home extends ActionBarActivity {
 
                     String username = jobj.getString("username");
                     String place = jobj.getString("checkin_place_name");
-                    String status = jobj.getString("status");
+                    String curStatus = jobj.getString("status");
                     String date = jobj.getString("date");
                     int likes = jobj.getInt("likes");
                     int id = jobj.getInt("checkin_id");
                     int like = jobj.getInt("if_liked");
 
-                    list.add(new Checkin(username,place,status,date,likes,id,like));
+                    list.add(new Checkin(username,place,curStatus,date,likes,id,like));
                 }
                 Adapter adapter = new Adapter(list,this);
                 checkInsList.setAdapter(adapter);
@@ -122,7 +146,6 @@ public class Home extends ActionBarActivity {
     }
 
     class CheckInTask extends AsyncTask<String, String, String> {
-
         /**
          * Before starting background thread Show Progress Dialog
          * */
@@ -201,12 +224,9 @@ public class Home extends ActionBarActivity {
          * Creating account
          * */
         protected String doInBackground(String... strings) {
-
             JSONObject json = new System().getProfile(strings);
-
             // Building Parameters
                     if(json != null) {
-                        //Log.d("Create Home", json.toString());
                         Intent i = new Intent(getApplicationContext(),Profile.class);
                         i.putExtra("jsonObject",json.toString());
                         startActivity(i);
@@ -259,7 +279,7 @@ public class Home extends ActionBarActivity {
                 i.putExtra("userEmail",strings[0]);
                 startActivity(i);
             } else
-                return null;
+                 return null;
 
             // closing this screen
             finish();
@@ -273,6 +293,54 @@ public class Home extends ActionBarActivity {
         protected void onPostExecute(String file_url) {
             // dismiss the dialog once done
             pDialog.dismiss();
+            // Intent back = new Intent(getApplicationContext(),MainActivity.class);
+            // startActivity(back);
+        }
+
+    }
+
+
+    class LocationTask extends AsyncTask<String, String, JSONObject> {
+        /**
+         * Before starting background thread Show Progress Dialog
+         * */
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pDialog = new ProgressDialog(Home.this);
+            pDialog.setMessage("Please wait..");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
+        }
+
+        /**
+         * get nearest
+         * */
+        protected JSONObject doInBackground(String... strings) {
+            JSONObject json = new System().getNearestLocation(strings);
+
+            // closing this screen
+            //finish();
+
+            return json;
+        }
+
+        /**
+         * After completing background task Dismiss the progress dialog
+         * **/
+        protected void onPostExecute(JSONObject json) {
+            if(json != null) {
+                try {
+                    inputLocation.setText(json.getString("name"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            // dismiss the dialog once done
+            pDialog.dismiss();
+
+
             // Intent back = new Intent(getApplicationContext(),MainActivity.class);
             // startActivity(back);
         }
