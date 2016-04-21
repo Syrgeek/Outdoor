@@ -1,5 +1,6 @@
 package com.example.hassan.outdoor;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -28,26 +29,28 @@ public class Followers extends ActionBarActivity {
         if(bundle != null) {
             String jsonString = bundle.getString("jsonObject");
             try {
-                String[] list = new String[1000];
 
                 JSONObject json = new JSONObject(jsonString);
                 String arr = json.getString("array");
                 JSONArray jar = new JSONArray(arr);
+                String list[] = new String[jar.length()];
 
-
-                for(int i=0; i<jar.length();++i) {
+                  for(int i=0; i < jar.length();++i) {
                     JSONObject jobj = jar.getJSONObject(i);
                     String name = jobj.getString("name");
                     list[i] = name;
                 }
 
-
-                ArrayAdapter adapter = new ArrayAdapter(this,R.layout.follower_item,list);
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.follower_item,R.id.followers_id,list);
                 followers.setAdapter(adapter);
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+        }
+        else {
+            Intent intent = new Intent(getApplicationContext(),Welcome.class);
+            startActivity(intent);
         }
     }
 
@@ -72,5 +75,4 @@ public class Followers extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 }

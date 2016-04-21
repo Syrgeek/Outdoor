@@ -65,18 +65,21 @@ public class Profile_Other extends ActionBarActivity {
                 java.util.List<Checkin> list = new ArrayList<Checkin>();
                 JSONObject json = new JSONObject(jsonString);
                 TextView tv = (TextView) findViewById(R.id.username);
-                tv.setText(json.getString("username"));
+                String userName = json.getString("username");
+                tv.setText(userName);
                 int friends = json.getInt("is_friend");
                 if(friends == 1){
-                    addFriend.setText("Ufollow");
+                    addFriend.setText("Unfollow");
                 }else {
                     addFriend.setText("Follow");
                 }
-                final JSONArray jar = json.getJSONArray("array");
+
+                String arr = json.getString("array");
+                JSONArray jar = new JSONArray(arr);
 
                 for(int i=0; i<jar.length();++i) {
                     JSONObject jobj = jar.getJSONObject(i);
-                    String username = jobj.getString("username");
+                    String username = userName;
                     String place = jobj.getString("checkin_place_name");
                     String status = jobj.getString("status");
                     String date = jobj.getString("date");
@@ -99,7 +102,7 @@ public class Profile_Other extends ActionBarActivity {
             public void onClick(View v) {
                 if (addFriend.getText().equals("Follow")) {
                     new FollowTask().execute(userEmail);
-                    addFriend.setText("Ufollow");
+                    addFriend.setText("Unfollow");
                 }
                 else {
                     new UnfollowTask().execute(userEmail);
@@ -186,7 +189,7 @@ public class Profile_Other extends ActionBarActivity {
          * */
         protected String doInBackground(String... strings) {
 
-            JSONObject json = new System().getMyProfile();
+            JSONObject json = new System().getProfile();
 
             // Building Parameters
 
@@ -250,7 +253,6 @@ public class Profile_Other extends ActionBarActivity {
         }
 
     }
-
     class UnfollowTask extends AsyncTask<String, String, String> {
 
         /**

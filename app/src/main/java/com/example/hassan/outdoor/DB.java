@@ -85,17 +85,6 @@ public class DB {
         Log.d("Create Response", json.toString());
     }
 
-    public JSONObject getMyProfile() {
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
-
-        String service = "getMyCheckins";
-
-        JSONObject json = jsonParser.makeHttpRequest(url + service,"POST", params);
-
-        Log.d("Create Response", json.toString());
-        return json;
-    }
-
     public JSONObject getHomeList() {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
 
@@ -109,12 +98,13 @@ public class DB {
 
     public JSONObject checkIn(String status,String location) {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
-        params.add(new BasicNameValuePair("status",status));
+        params.add(new BasicNameValuePair("email",System.myEmail));
         params.add(new BasicNameValuePair("placeName", location));
+        params.add(new BasicNameValuePair("status",status));
 
-        String file = "AddCheckin.php";
+        String service = "checkin";
 
-        JSONObject json = jsonParser.makeHttpRequest(url + file,"POST", params);
+        JSONObject json = jsonParser.makeHttpRequest(url + service,"POST", params);
 
         Log.d("Create Response", json.toString());
         return json;
@@ -122,11 +112,12 @@ public class DB {
 
     public JSONObject like(String checkin_id) {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("email",System.myEmail));
         params.add(new BasicNameValuePair("checkin_id",checkin_id));
 
-        String file = "AddLike.php";
+        String service = "like";
 
-        JSONObject json = jsonParser.makeHttpRequest(url + file,"POST", params);
+        JSONObject json = jsonParser.makeHttpRequest(url + service,"POST", params);
 
         Log.d("Create Response", json.toString());
 

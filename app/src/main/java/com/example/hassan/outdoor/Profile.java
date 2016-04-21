@@ -89,8 +89,8 @@ public class Profile extends ActionBarActivity {
                 JSONObject json = new JSONObject(jsonString);
                 TextView tv = (TextView) findViewById(R.id.username);
                 tv.setText(System.USERNAME);
-                String arr = json.getString("array");
 
+                String arr = json.getString("array");
                 JSONArray jar = new JSONArray(arr);
 
                 for(int i=0; i<jar.length();++i) {
@@ -207,7 +207,7 @@ public class Profile extends ActionBarActivity {
     class FollowersTask extends AsyncTask<String, String, String> {
 
         /**
-         * Before starting background thread Show Progress Dialog
+`         * Before starting background thread Show Progress Dialog
          * */
         @Override
         protected void onPreExecute() {
