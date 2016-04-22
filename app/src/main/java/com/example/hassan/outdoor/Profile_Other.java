@@ -47,7 +47,7 @@ public class Profile_Other extends ActionBarActivity {
 
             @Override
             public void onClick(View view) {
-                new MyProfileTask().execute();
+                new MyProfileTask().execute(System.myEmail);
             }
         });
 
