@@ -19,5 +19,6 @@
     <string name="title_activity_send_message">SendMessage</string>
     <string name="title_activity_followers">Followers</string>
     <string name="title_activity_checkin_location">Where are you ?</string>
+    <string name="title_activity_add__place">Add_Place</string>
 
 </resources>

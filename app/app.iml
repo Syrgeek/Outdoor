@@ -137,5 +137,8 @@
     <orderEntry type="library" exported="" name="play-services-fitness-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-wearable-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-plus-8.1.0" level="project" />
+    <orderEntry type="library" exported="" name="usb-android-21" level="project" />
+    <orderEntry type="library" exported="" name="effects-android-21" level="project" />
+    <orderEntry type="library" exported="" name="maps-android-21" level="project" />
   </component>
 </module>

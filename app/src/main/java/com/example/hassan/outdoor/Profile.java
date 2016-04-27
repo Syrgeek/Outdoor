@@ -6,8 +6,10 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -32,7 +34,7 @@ import java.lang.String;
 import java.lang.Object;
 
 
-public class Profile extends ActionBarActivity {
+public class Profile extends AppCompatActivity {
 
     ListView checkInsList;
     private ProgressDialog pDialog;
@@ -48,38 +50,12 @@ public class Profile extends ActionBarActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_profile);
 
-        Button logout = (Button) findViewById(R.id.logout_button);
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Login.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
         ImageView btnHome = (ImageView) findViewById(R.id.Home_button);
         btnHome.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
                 new HomeTask().execute();
-            }
-        });
-
-        Button inbox = (Button) findViewById(R.id.inbox_button);
-        inbox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new InboxTask().execute();
-            }
-        });
-
-        Button followers = (Button) findViewById(R.id.followers_button);
-        followers.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new FollowersTask().execute();
             }
         });
 
@@ -308,23 +284,33 @@ public class Profile extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_profile, menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_profile,menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
         switch (item.getItemId()) {
-            case R.id.item1:
-                Toast.makeText(getApplicationContext(), "Item 1 Selected", Toast.LENGTH_LONG).show();
+            case R.id.action_inbox:
+                new InboxTask().execute();
                 return true;
 
-            case R.id.item2:
-                Toast.makeText(getApplicationContext(), "Item 2 Selected", Toast.LENGTH_LONG).show();
+            case R.id.action_logout:
+                intent = new Intent(getApplicationContext(),Login.class);
+                startActivity(intent);
+                finish();
                 return true;
 
-            case R.id.item3:
-                Toast.makeText(getApplicationContext(), "Item 3 Selected", Toast.LENGTH_LONG).show();
+            case R.id.action_addPlace:
+                intent = new Intent(getApplicationContext(),Add_Place.class);
+                startActivity(intent);
+                finish();
+                return true;
+
+            case R.id.action_followers:
+                new FollowersTask().execute();
                 return true;
 
             default:

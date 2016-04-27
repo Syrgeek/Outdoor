@@ -20,6 +20,7 @@
             android:padding="10dp"
             android:orientation="horizontal">
 
+
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -49,61 +50,6 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="#08928e">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:orientation="vertical">
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:background="#0db0b7"
-                    android:textSize="18sp"
-                    android:textColor="#006167"
-                    android:textStyle="bold"
-                    android:text="Inbox"
-                    android:id="@+id/inbox_button"/>
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:textSize="18sp"
-                    android:background="#0db0b7"
-                    android:textColor="#006167"
-                    android:textStyle="bold"
-                    android:text="Followers"
-                    android:id="@+id/followers_button"/>
-
-
-
-            </LinearLayout>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:background="#0db0b7"
-                android:padding="5dp"
-                android:textSize="18sp"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:textColor="#006167"
-                android:textStyle="bold"
-                android:text="Log out"
-                android:id="@+id/logout_button"/>
-
-
-
 
             <LinearLayout
                 android:layout_width="fill_parent"

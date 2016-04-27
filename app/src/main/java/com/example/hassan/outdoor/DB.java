@@ -123,6 +123,21 @@ public class DB {
         return json;
     }
 
+    public JSONObject addPlace(String name,String lat,String lon) {
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("email",System.myEmail));
+        params.add(new BasicNameValuePair("placeName", name));
+        params.add(new BasicNameValuePair("lon",lon));
+        params.add(new BasicNameValuePair("lat",lat));
+
+        String service = "addPlace";
+
+        JSONObject json = jsonParser.makeHttpRequest(url + service,"POST", params);
+
+        Log.d("Create Response", json.toString());
+        return json;
+    }
+
     public JSONObject like(String checkin_id) {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("email",System.myEmail));

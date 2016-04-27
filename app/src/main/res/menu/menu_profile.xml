@@ -2,6 +2,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.hassan.outdoor.Profile">
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
+
+    <item android:id="@+id/action_inbox" android:title="Inbox"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_followers" android:title="Follower"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_addPlace" android:title="Add place"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_logout" android:title="Logout"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_settings" android:title="Settings"
         android:orderInCategory="100" app:showAsAction="never" />
 </menu>

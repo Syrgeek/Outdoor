@@ -110,6 +110,15 @@ public class System {
         return json;
     }
 
+    public JSONObject addPlace(String... strings){
+        String name = strings[0];
+        String lat = strings[1];
+        String lon = strings[2];
+
+        JSONObject json =  db.addPlace(name, lat, lon);
+        return json;
+    }
+
     public void addFollowerToBrand(NormalUser user, Brand b){
 
     }
