@@ -99,6 +99,19 @@ public class DB {
         Log.d("Create Response", json.toString());
         return json;
     }
+    public JSONObject commentToPlace(String text, String name) {
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("text", text));
+        params.add(new BasicNameValuePair("email", System.myEmail));
+        params.add(new BasicNameValuePair("placeName", name));
+
+
+        String service = "commentToPlace";
+        JSONObject json = jsonParser.makeHttpRequest(url + service,"POST", params);
+
+        Log.d("Create Response", json.toString());
+        return json;
+    }
     public JSONObject getNearestLocation(String lat, String lon) {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("lat", lat));

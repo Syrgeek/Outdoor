@@ -7,6 +7,9 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +23,8 @@ public class PlacePage extends ActionBarActivity {
     private TextView tvVoters;
     private TextView tvName;
     private RatingBar ratingBar;
+    private EditText etComment;
+    private Button btnPost;
     JSONObject json;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +35,8 @@ public class PlacePage extends ActionBarActivity {
         tvGlobalRate = (TextView)findViewById(R.id.globalRate);
         tvVoters = (TextView)findViewById(R.id.voters);
         ratingBar = (RatingBar)findViewById(R.id.rating);
+        etComment = (EditText)findViewById(R.id.placeComment);
+        btnPost = (Button)findViewById(R.id.postToPlace);
         if(bundle != null){
             try {
                 String jsonString = bundle.getString("jsonObject");
@@ -61,9 +68,14 @@ public class PlacePage extends ActionBarActivity {
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                double rate = ratingBar.getRating();
                 ratingBar.setIsIndicator(true);
                 new RateTask().execute(tvName.getText().toString(), "" + ratingBar.getRating());
+            }
+        });
+        btnPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new CommentToPlace().execute(etComment.getText().toString(), tvName.getText().toString());
             }
         });
     }
@@ -143,6 +155,45 @@ public class PlacePage extends ActionBarActivity {
     }
 
 
+
+    class CommentToPlace extends AsyncTask<String, String, String> {
+
+        /**
+         * Before starting background thread Show Progress Dialog
+         * */
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pDialog = new ProgressDialog(PlacePage.this);
+            pDialog.setMessage("Please wait..");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
+        }
+
+        /**
+         * Creating account
+         * */
+        protected String doInBackground(String... strings) {
+            JSONObject json1 = new System().commentToPlace(strings);
+
+            // Building Parameters
+            return null;
+        }
+
+        /**
+         * After completing background task Dismiss the progress dialog
+         * **/
+        protected void onPostExecute(String file_url) {
+            // dismiss the dialog once done
+
+            etComment.setText("");
+            pDialog.dismiss();
+            // Intent back = new Intent(getApplicationContext(),MainActivity.class);
+            // startActivity(back);
+        }
+
+    }
 
 
 }

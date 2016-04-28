@@ -133,7 +133,7 @@
                 android:background="@drawable/edittextstyle"
                 android:id="@+id/placeComment"/>
             <Button
-                android:id="@+id/plac"
+                android:id="@+id/postToPlace"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:text="Post"
