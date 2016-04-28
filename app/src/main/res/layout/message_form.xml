@@ -68,10 +68,10 @@
         android:layout_height="30dp"
         android:background="#0db0b7"
         android:textSize="16sp"
-        android:textColor="#006167"
+        android:textColor="#ffffff"
         android:layout_gravity="end"
-        android:text="Replay"
-        android:id="@+id/replay"/>
+        android:text="Reply"
+        android:id="@+id/reply"/>
 
 
 </LinearLayout>

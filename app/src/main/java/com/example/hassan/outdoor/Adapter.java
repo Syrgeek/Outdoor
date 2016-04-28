@@ -94,9 +94,6 @@ public class Adapter extends BaseAdapter {
         } else {
             holder = (Holder) convertView.getTag();
 
-
-
-
             String date = list.get(position).getDate();
             String place = list.get(position).getPlace();
             String username = list.get(position).getUsername();

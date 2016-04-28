@@ -88,12 +88,13 @@ public class DB {
 
     public void sendMessage(String receiver,String message) {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
-        params.add(new BasicNameValuePair("email",receiver));
-        params.add(new BasicNameValuePair("message", message));
+        params.add(new BasicNameValuePair("user_email",receiver));
+        params.add(new BasicNameValuePair("sender_user_email",System.myEmail));
+        params.add(new BasicNameValuePair("text", message));
 
-        String file = "AddMessage.php";
+        String service = "addMessage";
 
-        JSONObject json = jsonParser.makeHttpRequest(url + file,"POST", params);
+        JSONObject json = jsonParser.makeHttpRequest(url + service,"POST", params);
 
         Log.d("Create Response", json.toString());
     }
@@ -210,10 +211,11 @@ public class DB {
 
     public JSONObject getInbox() {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("email",System.myEmail));
 
-        String file = "GetUserMessages.php";
+        String service = "getAllMessages";
 
-        JSONObject json = jsonParser.makeHttpRequest(url + file,"POST", params);
+        JSONObject json = jsonParser.makeHttpRequest(url + service,"POST", params);
 
         Log.d("Create Response", json.toString());
         return json;

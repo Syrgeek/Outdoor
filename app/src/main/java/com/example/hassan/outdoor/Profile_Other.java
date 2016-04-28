@@ -189,7 +189,7 @@ public class Profile_Other extends ActionBarActivity {
          * */
         protected String doInBackground(String... strings) {
 
-            JSONObject json = new System().getProfile();
+            JSONObject json = new System().getProfile(strings);
 
             // Building Parameters
 

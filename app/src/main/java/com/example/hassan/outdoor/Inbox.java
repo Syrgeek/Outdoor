@@ -40,8 +40,8 @@ public class Inbox extends ActionBarActivity {
 
                 for(int i=0; i<jar.length();++i) {
                     JSONObject jobj = jar.getJSONObject(i);
-                    String sender = jobj.getString("username");
-                    String text = jobj.getString("message");
+                    String sender = jobj.getString("sender_user_name");
+                    String text = jobj.getString("text");
                     String date = jobj.getString("date");
                     String senderEmail = jobj.getString("sender_user_email");
 

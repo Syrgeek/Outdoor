@@ -76,10 +76,17 @@ public class InboxAdapter extends BaseAdapter{
 
         } else {
             holder = (MsgHolder) convertView.getTag();
+            String date = list.get(position).getDate();
+            String sender = list.get(position).getSender();
+            String text = list.get(position).getText();
+
+            holder.date.setText(date);
+            holder.sender.setText(sender);
+            holder.message.setText(text);
         }
 
-        final Button replay = (Button) convertView.findViewById(R.id.replay);
-        replay.setOnClickListener(new View.OnClickListener() {
+        final Button reply = (Button) convertView.findViewById(R.id.reply);
+        reply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                String userEmail = list.get(position).getUserEmail();
