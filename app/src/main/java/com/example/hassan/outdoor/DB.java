@@ -73,6 +73,32 @@ public class DB {
         return json;
     }
 
+    public JSONObject ratePlace(String placeName, String rate) {
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("email",System.myEmail));
+        params.add(new BasicNameValuePair("placeName",placeName));
+        params.add(new BasicNameValuePair("rate",rate));
+
+        String service = "ratePlace";
+
+        JSONObject json = jsonParser.makeHttpRequest(url + service,"POST", params);
+
+        Log.d("Create Response", json.toString());
+        return json;
+    }
+
+    public JSONObject getPlace(String name) {
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("email",System.myEmail));
+        params.add(new BasicNameValuePair("placeName",name));
+
+
+        String service = "getPlace";
+        JSONObject json = jsonParser.makeHttpRequest(url + service,"POST", params);
+
+        Log.d("Create Response", json.toString());
+        return json;
+    }
     public JSONObject getNearestLocation(String lat, String lon) {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("lat", lat));
@@ -97,6 +123,7 @@ public class DB {
 
         Log.d("Create Response", json.toString());
     }
+
 
     public JSONObject getHomeList() {
         List<NameValuePair> params = new ArrayList<NameValuePair>();

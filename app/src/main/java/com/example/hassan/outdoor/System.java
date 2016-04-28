@@ -78,10 +78,21 @@ public class System {
     public JSONObject getProfile(String... strings) {
 
         JSONObject json = db.getProfile(strings[0]);
-
         return json;
     }
 
+    public JSONObject ratePlace(String... strings) {
+
+        JSONObject json = db.ratePlace(strings[0], strings[1]);
+        return json;
+    }
+
+    public JSONObject getPlace(String... strings) {
+
+        JSONObject json = db.getPlace(strings[0]);
+
+        return json;
+    }
     public JSONObject getNearestLocation(String... strings) {
 
         JSONObject json = db.getNearestLocation(strings[0], strings[1]);

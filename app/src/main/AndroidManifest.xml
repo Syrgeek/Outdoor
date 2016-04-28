@@ -77,6 +77,11 @@
         <activity
             android:name=".Add_Place"
             android:label="@string/title_activity_add__place"></activity>
+        <activity
+            android:name=".PlacePage"
+            android:label="@string/title_activity_place_page" >
+        </activity>
+>>>>>>> Stashed changes
     </application>
 
 </manifest>
