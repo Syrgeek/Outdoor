@@ -157,7 +157,7 @@
             android:layout_marginBottom="3dp"
             android:divider="@android:color/transparent"
             android:dividerHeight="15dp"
-            android:id="@+id/comments_list">
+            android:id="@+id/placeCommentList">
 
         </ListView>
 

@@ -281,8 +281,11 @@ public class Home extends ActionBarActivity {
                     startActivity(i);
                     finish();
                 }else if(json2 != null && json2.getInt("success")==1){
+                    JSONObject json3 = new System().getPlaceComments(strings);
                     Intent i = new Intent(getApplicationContext(),PlacePage.class);
                     i.putExtra("jsonObject",json2.toString());
+                    i.putExtra("jsonObject2",json3.toString());
+
                     startActivity(i);
                 }
                 else

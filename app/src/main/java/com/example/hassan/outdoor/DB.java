@@ -73,6 +73,15 @@ public class DB {
         return json;
     }
 
+    public JSONObject getPlaceComments(String place) {
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("placeName",place));
+        String service = "getPlaceComments";
+        JSONObject json = jsonParser.makeHttpRequest(url + service,"POST", params);
+        Log.d("Create Response", json.toString());
+        return json;
+    }
+
     public JSONObject ratePlace(String placeName, String rate) {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("email",System.myEmail));
@@ -179,6 +188,20 @@ public class DB {
     }
 
     public JSONObject like(String checkin_id) {
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("email",System.myEmail));
+        params.add(new BasicNameValuePair("checkin_id",checkin_id));
+
+        String service = "like";
+
+        JSONObject json = jsonParser.makeHttpRequest(url + service,"POST", params);
+
+        Log.d("Create Response", json.toString());
+
+        return json;
+    }
+
+    public JSONObject likePlaceComment(String checkin_id) {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("email",System.myEmail));
         params.add(new BasicNameValuePair("checkin_id",checkin_id));

@@ -81,6 +81,14 @@ public class System {
         return json;
     }
 
+
+    public JSONObject getPlaceComments(String... strings) {
+
+        JSONObject json = db.getPlaceComments(strings[0]);
+        return json;
+    }
+
+
     public JSONObject ratePlace(String... strings) {
 
         JSONObject json = db.ratePlace(strings[0], strings[1]);

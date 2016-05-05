@@ -10,12 +10,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.*;
 
 public class PlacePage extends ActionBarActivity {
     private ProgressDialog pDialog;
@@ -25,6 +29,8 @@ public class PlacePage extends ActionBarActivity {
     private RatingBar ratingBar;
     private EditText etComment;
     private Button btnPost;
+    ListView commentsList;
+
     JSONObject json;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +43,7 @@ public class PlacePage extends ActionBarActivity {
         ratingBar = (RatingBar)findViewById(R.id.rating);
         etComment = (EditText)findViewById(R.id.placeComment);
         btnPost = (Button)findViewById(R.id.postToPlace);
+        commentsList = (ListView)findViewById(R.id.placeCommentList);
         if(bundle != null){
             try {
                 String jsonString = bundle.getString("jsonObject");
@@ -65,6 +72,38 @@ public class PlacePage extends ActionBarActivity {
                 e.printStackTrace();
             }
         }
+
+        if(bundle != null) {
+            String jsonString = bundle.getString("jsonObject2");
+
+            if(jsonString != null)
+                try {
+                    java.util.List<Comment> list = new ArrayList<Comment>();
+
+                    JSONObject json = new JSONObject(jsonString);
+                    String arr = json.getString("array");
+                    JSONArray jar = new JSONArray(arr);
+
+                    for(int i=0; i<jar.length();++i) {
+                        JSONObject jobj = jar.getJSONObject(i);
+
+                        String username = jobj.getString("user_name");
+                        String curStatus = jobj.getString("text");
+                        String date = jobj.getString("date");
+
+
+                        list.add(new Comment(username,curStatus,date));
+                    }
+                    PlaceAdapter adapter = new PlaceAdapter(list,this);
+                    commentsList.setAdapter(adapter);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+        }
+
+
+
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
