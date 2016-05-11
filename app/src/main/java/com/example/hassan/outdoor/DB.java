@@ -60,6 +60,18 @@ public class DB {
         return json;
     }
 
+
+    public JSONObject getAllNotifications() {
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("email",System.myEmail));
+        String service = "getAllNotifications";
+
+        JSONObject json = jsonParser.makeHttpRequest(url + service,"POST", params);
+
+        Log.d("Create Response", json.toString());
+        return json;
+    }
+
     public JSONObject getProfile(String email) {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("my_email",System.myEmail));

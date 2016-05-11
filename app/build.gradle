@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 'Google Inc.:Google APIs:21'
+    compileSdkVersion 21
     buildToolsVersion '21.1.1'
 
     defaultConfig {
@@ -21,7 +21,7 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:21.2.1'
-    compile 'com.android.support:support-v4:21.2.1'
+    compile 'com.android.support:appcompat-v7:21.0.2'
+    compile 'com.android.support:support-v4:21.0.2'
     compile 'com.google.android.gms:play-services:8.1.0'
 }

@@ -23,6 +23,10 @@ public class System {
     public boolean isNormalUser(NormalUser user){
         return false;
     }
+    public JSONObject getAllNotifications(String... strings) {
+        JSONObject json = db.getAllNotifications();
+        return json;
+    }
 
     public JSONObject like(String... strings) {
         JSONObject json = db.like(strings[0]);
