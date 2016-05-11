@@ -76,8 +76,8 @@ public class PlaceAdapter extends BaseAdapter {
             String date = list.get(position).getDate().toString();
             String username = list.get(position).getUser();
             String text = list.get(position).getText();
-            String likes = Integer.toString(list.get(position).getLikes());
-            int liked = list.get(position).getIf_liked();
+            //String likes = Integer.toString(list.get(position).getLikes());
+            //int liked = list.get(position).getIf_liked();
 
             holder.date.setText(date);
             holder.username.setText(username);

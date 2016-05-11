@@ -203,7 +203,6 @@ public class DB {
         return json;
     }
 
-<<<<<<< HEAD
     public JSONObject comment(String checkin_id,String text) {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("email",System.myEmail));
@@ -211,14 +210,19 @@ public class DB {
         params.add(new BasicNameValuePair("text",text));
 
         String service = "commentToCheckin";
-=======
+        JSONObject json = jsonParser.makeHttpRequest(url + service,"POST", params);
+
+        Log.d("Create Response", json.toString());
+
+        return json;
+    }
+
     public JSONObject likePlaceComment(String checkin_id) {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("email",System.myEmail));
         params.add(new BasicNameValuePair("checkin_id",checkin_id));
 
         String service = "like";
->>>>>>> 2b7eb031ea182acd03482355ba15a7708d02417e
 
         JSONObject json = jsonParser.makeHttpRequest(url + service,"POST", params);
 
