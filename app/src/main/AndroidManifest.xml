@@ -80,7 +80,7 @@
         <activity
             android:name=".PlacePage"
             android:label="@string/title_activity_place_page"></activity>
-        >>>>>>> Stashed changes
+
         <activity
             android:name=".util.Comments"
             android:label="@string/title_activity_comments"></activity>
