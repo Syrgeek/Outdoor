@@ -10,7 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import org.json.JSONException;
@@ -65,6 +67,7 @@ public class Adapter extends BaseAdapter {
             TextView s = (TextView) convertView.findViewById(R.id.status);
             TextView l = (TextView) convertView.findViewById(R.id.likes);
             TextView lb = (TextView) convertView.findViewById(R.id.like_button);
+            TextView c = (TextView) convertView.findViewById(R.id.comments);
 
             holder.date = d;
             holder.place = p;
@@ -72,19 +75,24 @@ public class Adapter extends BaseAdapter {
             holder.username = u;
             holder.likes = l;
             holder.like = lb;
+            holder.comments = c;
 
             String date = list.get(position).getDate();
             String place = list.get(position).getPlace();
             String username = list.get(position).getUsername();
             String status = list.get(position).getStatus();
             String likes = Integer.toString(list.get(position).getLikes());
+            String comments = Integer.toString(list.get(position).getComments());
             int liked = list.get(position).getIf_liked();
+
 
             holder.date.setText(date);
             holder.username.setText(username);
             holder.status.setText(status);
             holder.place.setText(place);
             holder.likes.setText(likes);
+            holder.comments.setText(comments);
+
             if(liked == 1)
                 holder.like.setText("Unlike");
             else
@@ -98,6 +106,7 @@ public class Adapter extends BaseAdapter {
             String place = list.get(position).getPlace();
             String username = list.get(position).getUsername();
             String status = list.get(position).getStatus();
+            String comments = Integer.toString(list.get(position).getComments());
             String likes = Integer.toString(list.get(position).getLikes());
             int liked = list.get(position).getIf_liked();
 
@@ -105,6 +114,7 @@ public class Adapter extends BaseAdapter {
             holder.username.setText(username);
             holder.status.setText(status);
             holder.place.setText(place);
+            holder.comments.setText(comments);
             holder.likes.setText(likes);
             if(liked == 1)
                 holder.like.setText("Unlike");
@@ -112,6 +122,24 @@ public class Adapter extends BaseAdapter {
                 holder.like.setText("Like");
 
         }
+
+        final TextView commentBtn = (TextView) convertView.findViewById(R.id.comment_button);
+        final TextView comments = (TextView) convertView.findViewById(R.id.comments);
+        final EditText comment = (EditText) convertView.findViewById(R.id.comment);
+        commentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int checkId = list.get(position).getId();
+                int num = list.get(position).getComments();
+                String text = comment.getText().toString();
+                comments.setText(Integer.toString(num+1));
+                new CommentTask().execute(Integer.toString(checkId), text);
+                list.get(position).setComment(num + 1);
+                comment.setText("");
+                comments.refreshDrawableState();
+                comment.refreshDrawableState();
+            }
+        });
 
         final TextView like = (TextView) convertView.findViewById(R.id.like_button);
         final TextView likes = (TextView) convertView.findViewById(R.id.likes);
@@ -143,6 +171,36 @@ public class Adapter extends BaseAdapter {
     }
 }
 
+class CommentTask extends AsyncTask<String, String, String> {
+
+    /**
+     * Before starting background thread Show Progress Dialog
+     * */
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+    }
+
+    /**
+     * Creating account
+     * */
+    protected String doInBackground(String... strings) {
+
+        JSONObject json = new System().comment(strings);
+        return null;
+    }
+
+    /**
+     * After completing background task Dismiss the progress dialog
+     * **/
+    protected void onPostExecute(String file_url) {
+        // dismiss the dialog once done
+        //pDialog.dismiss();
+        // Intent back = new Intent(getApplicationContext(),MainActivity.class);
+        // startActivity(back);
+    }
+
+}
 class LikeTask extends AsyncTask<String, String, String> {
 
     /**
@@ -174,6 +232,7 @@ class LikeTask extends AsyncTask<String, String, String> {
 
 }
 
+
 class Holder {
     TextView username;
     TextView status;
@@ -181,4 +240,5 @@ class Holder {
     TextView date;
     TextView likes;
     TextView like;
+    TextView comments;
 }

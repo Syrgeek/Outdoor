@@ -117,24 +117,25 @@ public class Home extends ActionBarActivity {
             if(jsonString != null)
             try {
                 List<Checkin> list = new ArrayList<Checkin>();
-                //list.add(new Checkin("Hassan","Cairo","Feeling good","27/12/2015",12,1));
 
                 JSONObject json = new JSONObject(jsonString);
+
                 String arr = json.getString("array");
                 JSONArray jar = new JSONArray(arr);
 
                 for(int i=0; i<jar.length();++i) {
                     JSONObject jobj = jar.getJSONObject(i);
 
-                    String username = jobj.getString("username");
+                    String username = jobj.getString("checkin_user_name");
                     String place = jobj.getString("checkin_place_name");
                     String curStatus = jobj.getString("status");
                     String date = jobj.getString("date");
                     int likes = jobj.getInt("likes");
                     int id = jobj.getInt("checkin_id");
                     int like = jobj.getInt("if_liked");
+                    int comments = jobj.getInt("numOfComments");
 
-                    list.add(new Checkin(username,place,curStatus,date,likes,id,like));
+                    list.add(new Checkin(username,place,curStatus,date,likes,id,like,comments));
                 }
                 Adapter adapter = new Adapter(list,this);
                 checkInsList.setAdapter(adapter);
@@ -142,6 +143,10 @@ public class Home extends ActionBarActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+        }
+        else {
+            Intent intent = new Intent(getApplicationContext(),Welcome.class);
+            startActivity(intent);
         }
     }
 
@@ -298,8 +303,6 @@ public class Home extends ActionBarActivity {
         }
 
     }
-
-
     class LocationTask extends AsyncTask<String, String, JSONObject> {
         /**
          * Before starting background thread Show Progress Dialog

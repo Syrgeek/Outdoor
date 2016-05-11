@@ -29,6 +29,11 @@ public class System {
         return json;
     }
 
+    public JSONObject comment(String... strings) {
+        JSONObject json = db.comment(strings[0],strings[1]);
+        return json;
+    }
+
     public JSONObject Follow(String... strings) {
         String userEmail = strings[0];
         JSONObject json = db.Follow(userEmail);
@@ -96,7 +101,6 @@ public class System {
     }
 
     public JSONObject getHomeList(String... strings) {
-
         JSONObject json = db.getHomeList();
 
         return json;

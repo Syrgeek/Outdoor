@@ -89,8 +89,9 @@ public class Profile extends AppCompatActivity {
                     int likes = jobj.getInt("likes");
                     int id = jobj.getInt("checkin_id");
                     int like = jobj.getInt("if_liked");
+                    int comments = jobj.getInt("numOfComments");
 
-                    list.add(new Checkin(username, place, status, date, likes, id, like));
+                    list.add(new Checkin(username, place, status, date, likes, id, like,comments));
                 }
                 Adapter adapter = new Adapter(list, this);
                 checkInsList.setAdapter(adapter);

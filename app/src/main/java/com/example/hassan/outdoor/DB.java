@@ -101,10 +101,11 @@ public class DB {
 
     public JSONObject getHomeList() {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("email",System.myEmail));
 
-        String file = "GetFriendsCheckin.php";
+        String service = "getFriendsCheckins";
 
-        JSONObject json = jsonParser.makeHttpRequest(url + file,"POST", params);
+        JSONObject json = jsonParser.makeHttpRequest(url + service,"POST", params);
 
         Log.d("Create Home", json.toString());
         return json;
@@ -145,6 +146,21 @@ public class DB {
         params.add(new BasicNameValuePair("checkin_id",checkin_id));
 
         String service = "like";
+
+        JSONObject json = jsonParser.makeHttpRequest(url + service,"POST", params);
+
+        Log.d("Create Response", json.toString());
+
+        return json;
+    }
+
+    public JSONObject comment(String checkin_id,String text) {
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("email",System.myEmail));
+        params.add(new BasicNameValuePair("checkin_id",checkin_id));
+        params.add(new BasicNameValuePair("text",text));
+
+        String service = "commentToCheckin";
 
         JSONObject json = jsonParser.makeHttpRequest(url + service,"POST", params);
 

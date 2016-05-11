@@ -10,13 +10,13 @@ public class Checkin {
     private String place ;
     private String status ;
     private String date ;
-    private ArrayList<Comment> comments ;
+    private int comments ;
     private int likes ;
     private int if_liked;
 
     Checkin() {super();}
 
-    Checkin(String u,String p,String s,String d,int l,int i,int liked) {
+    Checkin(String u,String p,String s,String d,int l,int i,int liked,int c) {
         status = s;
         place = p;
         date = d;
@@ -24,10 +24,14 @@ public class Checkin {
         likes = l;
         id = i;
         if_liked = liked;
-        //comments = new ArrayList<Comment>();
+        comments = c;
     }
 
     public void setIf_liked(int b) {this.if_liked = b;}
+
+    public int getComments() {return comments;}
+
+    public void setComment(int c) {this.comments = c;}
 
     public int getIf_liked() {return if_liked;}
 
@@ -65,14 +69,6 @@ public class Checkin {
 
     public void setDate(String date) {
         this.date = date;
-    }
-
-    public ArrayList<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(ArrayList<Comment> comments) {
-        this.comments = comments;
     }
 
     public int getLikers() {

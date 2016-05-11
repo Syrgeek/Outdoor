@@ -23,18 +23,18 @@ import java.util.List;
 import java.util.*;
 
 /**
- * Created by Hassan on 03/01/2016.
+ * Created by SyrGeek on 5/5/2016.
  */
-public class InboxAdapter extends BaseAdapter{
-    List<Message> list;
+public class CommentAdapter extends BaseAdapter {
+    List<Comment> list;
     Context context;
 
-    public InboxAdapter(Context context, List<Message> list) {
-        this.context = context;
+    public CommentAdapter(Context context, List<Comment> list) {
         this.list = list;
+        this.context = context;
     }
 
-    public InboxAdapter(Context context) {
+    public CommentAdapter(Context context) {
         this.context = context;
     }
 
@@ -50,59 +50,44 @@ public class InboxAdapter extends BaseAdapter{
         return 0;
     }
 
+
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        MsgHolder holder = new MsgHolder();
+        CommHolder holder = new CommHolder();
 
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.message_form, null);
+            convertView = inflater.inflate(R.layout.comments_item, null);
 
-            TextView s = (TextView) convertView.findViewById(R.id.sender);
+            TextView u = (TextView) convertView.findViewById(R.id.username);
             TextView d = (TextView) convertView.findViewById(R.id.date);
-            TextView m = (TextView) convertView.findViewById(R.id.message);
+            TextView t = (TextView) convertView.findViewById(R.id.text);
 
             holder.date = d;
-            holder.sender = s;
-            holder.message = m;
+            holder.user = u;
+            holder.text = t;
 
             String date = list.get(position).getDate();
-            String sender = list.get(position).getSender();
+            String sender = list.get(position).getUser();
             String text = list.get(position).getText();
 
             holder.date.setText(date);
-            holder.sender.setText(sender);
-            holder.message.setText(text);
+            holder.user.setText(sender);
+            holder.text.setText(text);
 
         } else {
-            holder = (MsgHolder) convertView.getTag();
+            holder = (CommHolder) convertView.getTag();
             String date = list.get(position).getDate();
-            String sender = list.get(position).getSender();
+            String sender = list.get(position).getUser();
             String text = list.get(position).getText();
-
-           // holder.date.setText(date);
-           // holder.sender.setText(sender);
-           // holder.message.setText(text);
         }
-
-        final Button reply = (Button) convertView.findViewById(R.id.reply);
-        reply.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               String userEmail = list.get(position).getUserEmail();
-               Intent intent = new Intent(context,SendMessage.class);
-                intent.putExtra("userEmail",userEmail);
-                context.startActivity(intent);
-            }
-        });
 
         return convertView;
     }
 }
 
-
-class MsgHolder {
-    TextView sender;
-    TextView message;
+class CommHolder {
+    TextView user;
+    TextView text;
     TextView date;
 }
