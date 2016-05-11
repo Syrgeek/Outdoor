@@ -7,8 +7,8 @@ public class Comment {
     private String date ;
     private String user ;
 
-    Comment(String u, String t, String d){
-         user = u;
+    public Comment(String u, String t, String d){
+        user = u;
         text = t;
         date = d;
     }

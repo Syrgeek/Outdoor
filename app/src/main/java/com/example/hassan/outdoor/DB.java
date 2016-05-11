@@ -108,6 +108,7 @@ public class DB {
         Log.d("Create Response", json.toString());
         return json;
     }
+
     public JSONObject commentToPlace(String text, String name) {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("text", text));
@@ -121,6 +122,7 @@ public class DB {
         Log.d("Create Response", json.toString());
         return json;
     }
+
     public JSONObject getNearestLocation(String lat, String lon) {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("lat", lat));
@@ -146,7 +148,6 @@ public class DB {
 
         Log.d("Create Response", json.toString());
     }
-
 
     public JSONObject getHomeList() {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -195,6 +196,19 @@ public class DB {
         params.add(new BasicNameValuePair("checkin_id",checkin_id));
 
         String service = "like";
+
+        JSONObject json = jsonParser.makeHttpRequest(url + service,"POST", params);
+
+        Log.d("Create Response", json.toString());
+
+        return json;
+    }
+
+    public JSONObject getCheckinComments(String checkin_id) {
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("checkin_id",checkin_id));
+
+        String service = "getCheckinComments";
 
         JSONObject json = jsonParser.makeHttpRequest(url + service,"POST", params);
 

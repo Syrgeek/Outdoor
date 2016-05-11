@@ -26,9 +26,6 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Osama on 4/5/2015.
- */
 public class PlaceAdapter extends BaseAdapter {
 
     java.util.List<Comment> list;
@@ -76,8 +73,6 @@ public class PlaceAdapter extends BaseAdapter {
             String date = list.get(position).getDate().toString();
             String username = list.get(position).getUser();
             String text = list.get(position).getText();
-            //String likes = Integer.toString(list.get(position).getLikes());
-            //int liked = list.get(position).getIf_liked();
 
             holder.date.setText(date);
             holder.username.setText(username);

@@ -207,9 +207,6 @@ public class Profile extends AppCompatActivity {
             pDialog.show();
         }
 
-        /**
-         * Creating account
-         */
         protected String doInBackground(String... strings) {
 
             JSONObject json = new System().getInbox();
@@ -225,9 +222,6 @@ public class Profile extends AppCompatActivity {
             return null;
         }
 
-        /**
-         * After completing background task Dismiss the progress dialog
-         **/
         protected void onPostExecute(String file_url) {
             // dismiss the dialog once done
             pDialog.dismiss();

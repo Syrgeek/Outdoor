@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.hassan.outdoor.util.Comments;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
@@ -28,7 +30,7 @@ import java.util.List;
 public class Adapter extends BaseAdapter {
 
     List<Checkin> list;
-    Context context;
+    public Context context;
 
     public Adapter(List<Checkin> list, Context context) {
         this.list = list;
@@ -132,12 +134,24 @@ public class Adapter extends BaseAdapter {
                 int checkId = list.get(position).getId();
                 int num = list.get(position).getComments();
                 String text = comment.getText().toString();
-                comments.setText(Integer.toString(num+1));
-                new CommentTask().execute(Integer.toString(checkId), text);
-                list.get(position).setComment(num + 1);
-                comment.setText("");
-                comments.refreshDrawableState();
-                comment.refreshDrawableState();
+                if(text.length() > 0) {
+                    comments.setText(Integer.toString(num+1));
+                    new CommentTask().execute(Integer.toString(checkId), text);
+                    list.get(position).setComment(num + 1);
+                    comment.setText("");
+                    comments.refreshDrawableState();
+                    comment.refreshDrawableState();
+                }
+
+            }
+        });
+
+        final TextView btnComments = (TextView) convertView.findViewById(R.id.getComments);
+        btnComments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int checkId = list.get(position).getId();
+                new getCommentsTask(context).execute(Integer.toString(checkId));
             }
         });
 
@@ -227,6 +241,47 @@ class LikeTask extends AsyncTask<String, String, String> {
         // dismiss the dialog once done
         //pDialog.dismiss();
         // Intent back = new Intent(getApplicationContext(),MainActivity.class);
+        // startActivity(back);
+    }
+
+}
+class getCommentsTask extends AsyncTask<String, String, String> {
+    private Context mContext;
+    public getCommentsTask(Context context){
+        mContext = context;
+    }
+
+    /**
+     * Before starting background thread Show Progress Dialog
+     * */
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+    }
+
+    /**
+     * Creating account
+     * */
+    protected String doInBackground(String... strings) {
+
+        JSONObject json = new System().getCheckinComments(strings);
+        Intent i = new Intent(mContext, Comments.class);
+        if (json != null)
+            i.putExtra("jsonObject", json.toString());
+        else
+            return null;
+
+        mContext.startActivity(i);
+        return null;
+    }
+
+    /**
+     * After completing background task Dismiss the progress dialog
+     * **/
+    protected void onPostExecute(String file_url) {
+        // dismiss the dialog once done
+        //pDialog.dismiss();
+        //Intent back = new Intent(getApplicationContext(),MainActivity.class);
         // startActivity(back);
     }
 

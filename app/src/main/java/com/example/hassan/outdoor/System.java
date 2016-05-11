@@ -29,6 +29,11 @@ public class System {
         return json;
     }
 
+    public JSONObject getCheckinComments(String... strings) {
+        JSONObject json = db.getCheckinComments(strings[0]);
+        return json;
+    }
+
     public JSONObject comment(String... strings) {
         JSONObject json = db.comment(strings[0],strings[1]);
         return json;

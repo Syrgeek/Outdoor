@@ -73,15 +73,17 @@
 
         <activity
             android:name=".CheckinLocation"
-            android:label="@string/title_activity_checkin_location"></activity>
+            android:label="@string/title_activity_checkin_location" />
         <activity
             android:name=".Add_Place"
-            android:label="@string/title_activity_add__place"></activity>
+            android:label="@string/title_activity_add__place" />
         <activity
             android:name=".PlacePage"
-            android:label="@string/title_activity_place_page" >
-        </activity>
->>>>>>> Stashed changes
+            android:label="@string/title_activity_place_page"></activity>
+        >>>>>>> Stashed changes
+        <activity
+            android:name=".util.Comments"
+            android:label="@string/title_activity_comments"></activity>
     </application>
 
 </manifest>
