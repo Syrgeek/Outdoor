@@ -235,9 +235,9 @@ public class Home extends ActionBarActivity {
                         Intent i = new Intent(getApplicationContext(),Profile.class);
                         i.putExtra("jsonObject",json.toString());
                         startActivity(i);
-                    } else
+                    } else {
                         return null;
-
+                    }
                 // closing this screen
                 finish();
 
@@ -274,20 +274,32 @@ public class Home extends ActionBarActivity {
          * Creating account
          * */
         protected String doInBackground(String... strings) {
-
-            JSONObject json = new System().getProfile(strings);
+            JSONObject json1 = new System().getProfile(strings);
+            JSONObject json2 = new System().getPlace(strings);
 
             // Building Parameters
-            if(json != null) {
-                Intent i = new Intent(getApplicationContext(),Profile_Other.class);
-                i.putExtra("jsonObject",json.toString());
-                i.putExtra("userEmail",strings[0]);
-                startActivity(i);
-            } else
-                 return null;
+            try {
+                if(json1 != null && json1.getString("username")!="null") {
+                    Intent i = new Intent(getApplicationContext(),Profile_Other.class);
+                    i.putExtra("jsonObject",json1.toString());
+                    i.putExtra("userEmail",strings[0]);
+                    startActivity(i);
+                    finish();
+                }else if(json2 != null && json2.getInt("success")==1){
+                    JSONObject json3 = new System().getPlaceComments(strings);
+                    Intent i = new Intent(getApplicationContext(),PlacePage.class);
+                    i.putExtra("jsonObject",json2.toString());
+                    i.putExtra("jsonObject2",json3.toString());
 
+                    startActivity(i);
+                }
+                else
+                    return null;
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             // closing this screen
-            //finish();
+
 
             return null;
         }

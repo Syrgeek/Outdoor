@@ -73,6 +73,54 @@ public class DB {
         return json;
     }
 
+    public JSONObject getPlaceComments(String place) {
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("placeName",place));
+        String service = "getPlaceComments";
+        JSONObject json = jsonParser.makeHttpRequest(url + service,"POST", params);
+        Log.d("Create Response", json.toString());
+        return json;
+    }
+
+    public JSONObject ratePlace(String placeName, String rate) {
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("email",System.myEmail));
+        params.add(new BasicNameValuePair("placeName",placeName));
+        params.add(new BasicNameValuePair("rate",rate));
+
+        String service = "ratePlace";
+
+        JSONObject json = jsonParser.makeHttpRequest(url + service,"POST", params);
+
+        Log.d("Create Response", json.toString());
+        return json;
+    }
+
+    public JSONObject getPlace(String name) {
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("email",System.myEmail));
+        params.add(new BasicNameValuePair("placeName",name));
+
+
+        String service = "getPlace";
+        JSONObject json = jsonParser.makeHttpRequest(url + service,"POST", params);
+
+        Log.d("Create Response", json.toString());
+        return json;
+    }
+    public JSONObject commentToPlace(String text, String name) {
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("text", text));
+        params.add(new BasicNameValuePair("email", System.myEmail));
+        params.add(new BasicNameValuePair("placeName", name));
+
+
+        String service = "commentToPlace";
+        JSONObject json = jsonParser.makeHttpRequest(url + service,"POST", params);
+
+        Log.d("Create Response", json.toString());
+        return json;
+    }
     public JSONObject getNearestLocation(String lat, String lon) {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("lat", lat));
@@ -98,6 +146,7 @@ public class DB {
 
         Log.d("Create Response", json.toString());
     }
+
 
     public JSONObject getHomeList() {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -154,6 +203,7 @@ public class DB {
         return json;
     }
 
+<<<<<<< HEAD
     public JSONObject comment(String checkin_id,String text) {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("email",System.myEmail));
@@ -161,6 +211,14 @@ public class DB {
         params.add(new BasicNameValuePair("text",text));
 
         String service = "commentToCheckin";
+=======
+    public JSONObject likePlaceComment(String checkin_id) {
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("email",System.myEmail));
+        params.add(new BasicNameValuePair("checkin_id",checkin_id));
+
+        String service = "like";
+>>>>>>> 2b7eb031ea182acd03482355ba15a7708d02417e
 
         JSONObject json = jsonParser.makeHttpRequest(url + service,"POST", params);
 

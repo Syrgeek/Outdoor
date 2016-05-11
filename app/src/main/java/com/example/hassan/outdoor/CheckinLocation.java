@@ -66,6 +66,7 @@ public class CheckinLocation extends FragmentActivity {
                     it.putExtra("status", status);
                     it.putExtra("jsonObject", json);
                     startActivity(it);
+                    finish();
                 }
                 return true;
             }
