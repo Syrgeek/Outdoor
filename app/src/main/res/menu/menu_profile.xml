@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.hassan.outdoor.Profile">
 
+    <item android:id="@+id/action_notifications" android:title="Notifications"
+        android:orderInCategory="100" app:showAsAction="never" />
     <item android:id="@+id/action_inbox" android:title="Inbox"
         android:orderInCategory="100" app:showAsAction="never" />
     <item android:id="@+id/action_followers" android:title="Followers"

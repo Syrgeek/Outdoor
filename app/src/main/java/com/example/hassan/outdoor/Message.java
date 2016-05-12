@@ -15,6 +15,9 @@ public class Message {
         this.userEmail = userEmail;
     }
 
+    public Message() {
+    }
+
     public String getUserEmail() {return userEmail;}
 
     public void setUserEmail(String userEmail) {this.userEmail = userEmail;}

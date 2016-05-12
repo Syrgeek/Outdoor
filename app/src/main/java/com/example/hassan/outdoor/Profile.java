@@ -191,7 +191,6 @@ public class Profile extends AppCompatActivity {
         }
 
     }
-
     class InboxTask extends AsyncTask<String, String, String> {
 
         /**
@@ -230,7 +229,6 @@ public class Profile extends AppCompatActivity {
         }
 
     }
-
     class FollowersTask extends AsyncTask<String, String, String> {
 
         /**
@@ -275,6 +273,45 @@ public class Profile extends AppCompatActivity {
         }
 
     }
+    class NotificationsTask extends AsyncTask<String, String, String> {
+
+        /**
+         * Before starting background thread Show Progress Dialog
+         */
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pDialog = new ProgressDialog(Profile.this);
+            pDialog.setMessage("Loading...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
+        }
+
+        protected String doInBackground(String... strings) {
+
+            JSONObject json = new System().getAllNotifications();
+
+            Intent i = new Intent(getApplicationContext(), Notifications.class);
+            if (json != null)
+                i.putExtra("jsonObject", json.toString());
+            else
+                return null;
+
+            startActivity(i);
+            // closing this screen
+            return null;
+        }
+
+        protected void onPostExecute(String file_url) {
+            // dismiss the dialog once done
+            pDialog.dismiss();
+            // Intent back = new Intent(getApplicationContext(),MainActivity.class);
+            // startActivity(back);
+        }
+
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -306,6 +343,10 @@ public class Profile extends AppCompatActivity {
 
             case R.id.action_followers:
                 new FollowersTask().execute();
+                return true;
+
+            case R.id.action_notifications:
+                new NotificationsTask().execute();
                 return true;
 
             default:

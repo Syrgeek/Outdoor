@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:orientation="vertical">
@@ -51,7 +51,7 @@
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="35dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:orientation="horizontal">
 
                 <EditText
@@ -80,7 +80,7 @@
 
             <EditText
                 android:layout_width="fill_parent"
-                android:layout_height="100dp"
+                android:layout_height="wrap_content"
                 android:hint="Say something..."
                 android:textColorHint="#808080"
                 android:gravity="top"
@@ -119,9 +119,9 @@
             <TextView android:layout_height="wrap_content"
                 android:layout_width="fill_parent"
                 android:id="@+id/error_message"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="0dp"
                 android:textColor="#FF0000"
-                android:textSize="18sp"
+                android:textSize="0sp"
                 android:text=""
                 android:layout_gravity="left"/>
 
@@ -142,4 +142,4 @@
     </ListView>
 
 
-    </LinearLayout>
+</LinearLayout>

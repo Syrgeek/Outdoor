@@ -1,16 +1,10 @@
-<ScrollView
-    android:layout_height="fill_parent"
-    android:layout_width="fill_parent"
-    android:background="#0cbcb7"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:fillViewport="true"
-    android:focusable="false">
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:fillViewport="true"
+        android:background="#0cbcb7"
         tools:context="com.example.hassan.outdoor.Profile_Other">
 
         <RelativeLayout
@@ -107,8 +101,6 @@
             </LinearLayout>
 
 
-
-
         </RelativeLayout>
 
         <ListView
@@ -124,7 +116,5 @@
 
         </ListView>
 
-
     </LinearLayout>
 
-</ScrollView>
