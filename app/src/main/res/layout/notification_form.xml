@@ -14,6 +14,7 @@
         android:background="#baf5f3"
         android:textStyle="bold"
         android:textSize="18sp"
+        android:padding="5dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:id="@+id/user" />
@@ -25,7 +26,7 @@
         android:textColor="#000000"
         android:text="Hi there I am in Paris."
         android:textSize="18sp"
-        android:padding="7dp"
+        android:padding="5dp"
         android:id="@+id/status"/>
 
 
