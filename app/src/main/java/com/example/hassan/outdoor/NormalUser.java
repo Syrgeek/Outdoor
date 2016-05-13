@@ -2,6 +2,9 @@ package com.example.hassan.outdoor;
 
 import java.util.ArrayList;
 
+/**
+ * NormalUser model
+ */
 public class NormalUser {
     private String email ;
     private String username ;

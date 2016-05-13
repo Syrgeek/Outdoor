@@ -15,6 +15,9 @@ import org.json.JSONObject;
 import java.lang.reflect.Array;
 import java.util.*;
 
+/**
+ * activity for displaying a list of followers
+ */
 public class Followers extends ActionBarActivity {
     ListView followers;
 

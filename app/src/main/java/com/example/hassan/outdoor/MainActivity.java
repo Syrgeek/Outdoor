@@ -9,7 +9,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-
+/**
+ * starting activity
+ */
 public class MainActivity extends ActionBarActivity {
 
     @Override

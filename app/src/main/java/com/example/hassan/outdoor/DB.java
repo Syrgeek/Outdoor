@@ -15,6 +15,10 @@ import java.util.List;
 /**
  * Created by Osama on 12/25/2015.
  */
+
+/**
+ * Manages the connection between the application and the backend
+ */
 public class DB {
 
     private static final String url = "http://outdoorbackend-outdoor2.rhcloud.com/Outdoor-Backend/rest/";

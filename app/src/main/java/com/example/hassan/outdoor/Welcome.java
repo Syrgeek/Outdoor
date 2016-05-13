@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+ * Welcoming user by his username
+ */
 
 public class Welcome extends ActionBarActivity {
 

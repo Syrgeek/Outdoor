@@ -20,6 +20,10 @@ import org.json.JSONObject;
 
 import java.util.*;
 
+/**
+ * This activity includes info about the page (user rating, average rating,
+ * number of voters and comments)
+ */
 public class PlacePage extends ActionBarActivity {
     private ProgressDialog pDialog;
     private TextView tvGlobalRate;

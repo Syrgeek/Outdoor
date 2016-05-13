@@ -26,7 +26,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.lang.String;
 
-
+/**
+ * Display my profile
+ */
 public class Profile extends AppCompatActivity {
 
     ListView checkInsList;

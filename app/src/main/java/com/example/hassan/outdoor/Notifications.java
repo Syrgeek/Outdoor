@@ -12,6 +12,9 @@ import org.json.JSONObject;
 
 import java.util.*;
 
+/**
+ * activity to display notifications
+ */
 public class Notifications extends ActionBarActivity {
     ListView notifications;
 

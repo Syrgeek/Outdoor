@@ -15,7 +15,11 @@ import android.widget.TextView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
+/**
+ * activity to allow user to get to his account if he lost his password
+ *
+ * needs modifying to work with the new services
+ */
 public class ForgetPassword extends ActionBarActivity {
 
     private ProgressDialog pDialog;

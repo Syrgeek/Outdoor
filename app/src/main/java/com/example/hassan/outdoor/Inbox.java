@@ -16,7 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
 
-
+/**
+ * The messaging system of the application
+ */
 
 public class Inbox extends ActionBarActivity {
     ListView inbox;

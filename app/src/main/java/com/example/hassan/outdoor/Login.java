@@ -16,7 +16,9 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
+/**
+ * activity to allow user to login to his account
+ */
 public class Login extends ActionBarActivity {
 
     private ProgressDialog pDialog;
