@@ -30,7 +30,9 @@ import android.widget.TextView;
  */
 
 
-
+/**
+ * Display other users' profiles
+ */
 public class Register extends ActionBarActivity {
 
     private ProgressDialog pDialog;

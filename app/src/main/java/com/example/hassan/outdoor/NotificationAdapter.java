@@ -56,12 +56,17 @@ public class NotificationAdapter extends BaseAdapter {
             String header = user + (type.equals("Comment")?" commented":" liked") + (type.equals("Comment")?" on":"") + " your checkin";
             holder.user.setText(header);
             holder.status.setText("Checkin: " + status);
+            convertView.setTag(holder);
+
 
         } else {
             holder = (NotificationHolder) convertView.getTag();
             String user = list.get(position).getUsername();
             String type = list.get(position).getType();
             String status = list.get(position).getStatus();
+            String header = user + (type.equals("Comment")?" commented":" liked") + (type.equals("Comment")?" on":"") + " your checkin";
+            holder.user.setText(header);
+            holder.status.setText("Checkin: " + status);
         }
 
         return convertView;

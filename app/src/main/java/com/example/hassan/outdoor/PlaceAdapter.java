@@ -4,27 +4,14 @@ package com.example.hassan.outdoor;
  * Created by Osama on 5/4/2016.
  */
 
-import java.util.*;
-
-import android.app.LauncherActivity;
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
-import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class PlaceAdapter extends BaseAdapter {
 
@@ -62,9 +49,9 @@ public class PlaceAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.place_list_item, null);
 
-            TextView u = (TextView) convertView.findViewById(R.id.placeCommentUsername);
-            TextView d = (TextView) convertView.findViewById(R.id.placeCommentDate);
-            TextView s = (TextView) convertView.findViewById(R.id.placeCommentText);
+            TextView u = (TextView) convertView.findViewById(R.id.place_comment_username);
+            TextView d = (TextView) convertView.findViewById(R.id.place_comment_date);
+            TextView s = (TextView) convertView.findViewById(R.id.place_comment_text);
 
             holder.date = d;
             holder.text = s;

@@ -4,21 +4,15 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -31,9 +25,10 @@ import org.json.JSONException;
 import java.util.ArrayList;
 import java.util.List;
 import java.lang.String;
-import java.lang.Object;
 
-
+/**
+ * Display my profile
+ */
 public class Profile extends AppCompatActivity {
 
     ListView checkInsList;
@@ -50,7 +45,7 @@ public class Profile extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_profile);
 
-        ImageView btnHome = (ImageView) findViewById(R.id.Home_button);
+        ImageView btnHome = (ImageView) findViewById(R.id.home_button);
         btnHome.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -93,8 +88,8 @@ public class Profile extends AppCompatActivity {
 
                     list.add(new Checkin(username, place, status, date, likes, id, like,comments));
                 }
-                Adapter adapter = new Adapter(list, this);
-                checkInsList.setAdapter(adapter);
+                CheckinAdapter checkinAdapter = new CheckinAdapter(list, this);
+                checkInsList.setAdapter(checkinAdapter);
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -336,7 +331,7 @@ public class Profile extends AppCompatActivity {
                 return true;
 
             case R.id.action_addPlace:
-                intent = new Intent(getApplicationContext(),Add_Place.class);
+                intent = new Intent(getApplicationContext(),AddPlace.class);
                 startActivity(intent);
                 finish();
                 return true;

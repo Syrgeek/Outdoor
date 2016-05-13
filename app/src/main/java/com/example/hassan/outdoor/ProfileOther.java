@@ -20,7 +20,7 @@ import org.json.JSONObject;
 import java.util.*;
 
 
-public class Profile_Other extends ActionBarActivity {
+public class ProfileOther extends ActionBarActivity {
 
     ListView checkInsList;
     TextView username;
@@ -31,9 +31,9 @@ public class Profile_Other extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
-        setContentView(R.layout.activity_profile__other);
+        setContentView(R.layout.activity_profile_other);
 
-        ImageView btnHome = (ImageView) findViewById(R.id.Home_button);
+        ImageView btnHome = (ImageView) findViewById(R.id.home_button);
         btnHome.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -90,8 +90,8 @@ public class Profile_Other extends ActionBarActivity {
 
                     list.add(new Checkin(username,place,status,date,likes,id,like,comments));
                 }
-                Adapter adapter = new Adapter(list,this);
-                checkInsList.setAdapter(adapter);
+                CheckinAdapter checkinAdapter = new CheckinAdapter(list,this);
+                checkInsList.setAdapter(checkinAdapter);
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -133,7 +133,7 @@ public class Profile_Other extends ActionBarActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(Profile_Other.this);
+            pDialog = new ProgressDialog(ProfileOther.this);
             pDialog.setMessage("Please wait...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
@@ -178,7 +178,7 @@ public class Profile_Other extends ActionBarActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(Profile_Other.this);
+            pDialog = new ProgressDialog(ProfileOther.this);
             pDialog.setMessage("Please wait..");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
@@ -227,7 +227,7 @@ public class Profile_Other extends ActionBarActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(Profile_Other.this);
+            pDialog = new ProgressDialog(ProfileOther.this);
             pDialog.setMessage("Please wait..");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
@@ -262,7 +262,7 @@ public class Profile_Other extends ActionBarActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(Profile_Other.this);
+            pDialog = new ProgressDialog(ProfileOther.this);
             pDialog.setMessage("Please wait..");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);

@@ -74,12 +74,16 @@ public class CommentAdapter extends BaseAdapter {
             holder.date.setText(date);
             holder.user.setText(user);
             holder.text.setText(text);
-
+            convertView.setTag(holder);
         } else {
             holder = (CommHolder) convertView.getTag();
             String date = list.get(position).getDate();
             String user = list.get(position).getUser();
             String text = list.get(position).getText();
+            holder.date.setText(date);
+            holder.user.setText(user);
+            holder.text.setText(text);
+
         }
 
         return convertView;

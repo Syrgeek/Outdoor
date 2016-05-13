@@ -1,7 +1,6 @@
 package com.example.hassan.outdoor;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -21,6 +20,10 @@ import org.json.JSONObject;
 
 import java.util.*;
 
+/**
+ * This activity includes info about the page (user rating, average rating,
+ * number of voters and comments)
+ */
 public class PlacePage extends ActionBarActivity {
     private ProgressDialog pDialog;
     private TextView tvGlobalRate;
@@ -38,12 +41,12 @@ public class PlacePage extends ActionBarActivity {
         setContentView(R.layout.activity_place_page);
         Bundle bundle = getIntent().getExtras(); //modify later
 
-        tvGlobalRate = (TextView)findViewById(R.id.globalRate);
+        tvGlobalRate = (TextView)findViewById(R.id.global_rate);
         tvVoters = (TextView)findViewById(R.id.voters);
         ratingBar = (RatingBar)findViewById(R.id.rating);
-        etComment = (EditText)findViewById(R.id.placeComment);
-        btnPost = (Button)findViewById(R.id.postToPlace);
-        commentsList = (ListView)findViewById(R.id.placeCommentList);
+        etComment = (EditText)findViewById(R.id.place_comment);
+        btnPost = (Button)findViewById(R.id.post_to_place);
+        commentsList = (ListView)findViewById(R.id.place_comment_list);
         if(bundle != null){
             try {
                 String jsonString = bundle.getString("jsonObject");
@@ -53,7 +56,7 @@ public class PlacePage extends ActionBarActivity {
                 int numOfUsers = json.getInt("numberOfUsers");
                 double myRate = json.getDouble("myRate");
 
-                tvName = (TextView)findViewById(R.id.pageName);
+                tvName = (TextView)findViewById(R.id.page_name);
                 tvName.setText(name);
 
                 String modified = (rate + "");
