@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -32,13 +31,13 @@ public class CheckinLocation extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkin_location);
         setUpMapIfNeeded();
-        Button btnSearch = (Button)findViewById(R.id.btnSearch);
+        Button btnSearch = (Button)findViewById(R.id.search);
         btnSearch.setOnClickListener(onSearch);
         Bundle bundle = getIntent().getExtras(); //modify later
         json = bundle.getString("json");
         status = bundle.getString("status");
 
-        EditText et = (EditText)findViewById(R.id.etAddress);
+        EditText et = (EditText)findViewById(R.id.address);
         
         mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
             @Override
@@ -86,7 +85,7 @@ public class CheckinLocation extends FragmentActivity {
     View.OnClickListener onSearch = new View.OnClickListener(){
         @Override
         public void onClick(View v) {
-            EditText et = (EditText)findViewById(R.id.etAddress);
+            EditText et = (EditText)findViewById(R.id.address);
             String loc = et.getText().toString();
             if(!loc.equals("")){
                 List<Address> ads = null;

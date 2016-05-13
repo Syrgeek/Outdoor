@@ -1,6 +1,4 @@
 package com.example.hassan.outdoor;
-import com.example.hassan.outdoor.Checkin;
-import com.example.hassan.outdoor.Conversation;
 
 import java.util.ArrayList;
 
@@ -11,7 +9,6 @@ public class NormalUser {
     private String question;
     private String answer;
     private String email2;
-    private ArrayList<Conversation> conversations ;
     private ArrayList<Checkin> checkins ;
     private ArrayList<NormalUser> friends ;
     //private ArrayList<Taste> tastes ;
@@ -62,14 +59,6 @@ public class NormalUser {
 
     public void setEmail2(String email2) {
         this.email2 = email2;
-    }
-
-    public ArrayList<Conversation> getConversations() {
-        return conversations;
-    }
-
-    public void setConversations(ArrayList<Conversation> conversations) {
-        this.conversations = conversations;
     }
 
     public ArrayList<Checkin> getCheckins() {

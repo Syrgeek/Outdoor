@@ -5,7 +5,7 @@
         android:orientation="vertical"
         android:fillViewport="true"
         android:background="#0cbcb7"
-        tools:context="com.example.hassan.outdoor.Profile_Other">
+        tools:context="com.example.hassan.outdoor.ProfileOther">
 
         <RelativeLayout
             android:layout_width="fill_parent"

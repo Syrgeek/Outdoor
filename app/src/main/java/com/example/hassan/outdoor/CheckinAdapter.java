@@ -27,17 +27,17 @@ import java.util.List;
 /**
  * Created by Hassan on 27/12/2015.
  */
-public class Adapter extends BaseAdapter {
+public class CheckinAdapter extends BaseAdapter {
 
     List<Checkin> list;
     public Context context;
 
-    public Adapter(List<Checkin> list, Context context) {
+    public CheckinAdapter(List<Checkin> list, Context context) {
         this.list = list;
         this.context = context;
     }
 
-    Adapter(Context c) {
+    CheckinAdapter(Context c) {
         context = c;
         list = new ArrayList<Checkin>();
     }

@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,7 +13,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,7 +20,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Date;
 
 public class Home extends ActionBarActivity {
 
@@ -137,8 +134,8 @@ public class Home extends ActionBarActivity {
 
                     list.add(new Checkin(username,place,curStatus,date,likes,id,like,comments));
                 }
-                Adapter adapter = new Adapter(list,this);
-                checkInsList.setAdapter(adapter);
+                CheckinAdapter checkinAdapter = new CheckinAdapter(list,this);
+                checkInsList.setAdapter(checkinAdapter);
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -280,7 +277,7 @@ public class Home extends ActionBarActivity {
             // Building Parameters
             try {
                 if(json1 != null && json1.getString("username")!="null") {
-                    Intent i = new Intent(getApplicationContext(),Profile_Other.class);
+                    Intent i = new Intent(getApplicationContext(),ProfileOther.class);
                     i.putExtra("jsonObject",json1.toString());
                     i.putExtra("userEmail",strings[0]);
                     startActivity(i);

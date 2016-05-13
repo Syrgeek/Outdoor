@@ -13,7 +13,7 @@ import android.widget.TextView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Add_Place extends ActionBarActivity {
+public class AddPlace extends ActionBarActivity {
 
     private ProgressDialog pDialog;
 
@@ -28,7 +28,7 @@ public class Add_Place extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
-        setContentView(R.layout.activity_add__place);
+        setContentView(R.layout.activity_add_place);
 
         inputName = (EditText) findViewById(R.id.place_name);
         inputLat = (EditText) findViewById(R.id.latitude);
@@ -59,7 +59,7 @@ public class Add_Place extends ActionBarActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(Add_Place.this);
+            pDialog = new ProgressDialog(AddPlace.this);
             pDialog.setMessage("Creating place...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
@@ -80,7 +80,7 @@ public class Add_Place extends ActionBarActivity {
 
             // Building Parameters
             if(success == 1){
-                Intent i = new Intent(getApplicationContext(), Add_Place.class);
+                Intent i = new Intent(getApplicationContext(), AddPlace.class);
                 startActivity(i);
                 // closing this screen
                 finish();

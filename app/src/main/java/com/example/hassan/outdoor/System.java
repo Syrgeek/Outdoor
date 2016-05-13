@@ -8,22 +8,7 @@ public class System {
     public static String myEmail = "";
     public static String USERNAME = "",PASSWORD = "";
 
-    public void sendnotification(Message not){
-
-    }
-
-    public void showSortedPlaces(List l){
-
-    }
-
-    public void	showMessage(Message msg){
-
-    }
-
-    public boolean isNormalUser(NormalUser user){
-        return false;
-    }
-    public JSONObject getAllNotifications(String... strings) {
+     public JSONObject getAllNotifications(String... strings) {
         JSONObject json = db.getAllNotifications();
         return json;
     }
@@ -160,45 +145,7 @@ public class System {
         return json;
     }
 
-    public void addFollowerToBrand(NormalUser user, Brand b){
 
-    }
-
-    public List getPlacesList(){
-        return null;
-    }
-
-    public void sortPlaces(List list, String sorting){
-
-    }
-
-    public void addTipToPlace(Comment comm){
-
-    }
-
-    public void addBrand(Brand brand){
-
-    }
-
-    public boolean validateLocation(Location loc){
-        return false;
-    }
-
-    public void updateUserProfile(NormalUser user){
-
-    }
-
-    public Location getCurrentLocation(){
-        return null;
-    }
-
-    public String getDirection(Place source, Place destination){
-        return "";
-    }
-
-    public boolean checkIfVisited(NormalUser user, Place place){
-        return false;
-    }
 
     public JSONObject getInbox() {
         JSONObject json = db.getInbox();

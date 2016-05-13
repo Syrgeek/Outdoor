@@ -73,6 +73,7 @@ public class InboxAdapter extends BaseAdapter{
             holder.date.setText(date);
             holder.sender.setText(sender);
             holder.message.setText(text);
+            convertView.setTag(holder);
 
         } else {
             holder = (MsgHolder) convertView.getTag();
@@ -80,9 +81,9 @@ public class InboxAdapter extends BaseAdapter{
             String sender = list.get(position).getSender();
             String text = list.get(position).getText();
 
-           // holder.date.setText(date);
-           // holder.sender.setText(sender);
-           // holder.message.setText(text);
+            holder.date.setText(date);
+            holder.sender.setText(sender);
+            holder.message.setText(text);
         }
 
         final Button reply = (Button) convertView.findViewById(R.id.reply);
