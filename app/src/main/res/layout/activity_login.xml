@@ -2,7 +2,8 @@
     android:layout_height="fill_parent"
     android:layout_width="fill_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:id="@+id/Login">
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="fill_parent"
@@ -32,6 +33,7 @@
                 android:padding="7dp"
                 android:layout_marginTop="7dp"
                 android:hint="E-mail"
+                android:tag="Log"
                 android:id="@+id/login_email"/>
 
 
@@ -44,6 +46,7 @@
                 android:layout_marginTop="7dp"
                 android:password="true"
                 android:hint="Password"
+                android:tag="Log"
                 android:id="@+id/login_password"/>
 
             <TextView

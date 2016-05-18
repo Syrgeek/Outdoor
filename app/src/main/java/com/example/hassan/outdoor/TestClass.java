@@ -3,6 +3,7 @@ package com.example.hassan.outdoor;
 
 
 import android.util.Log;
+import android.widget.TextView;
 
 import junit.framework.Assert;
 import io.appium.java_client.AppiumDriver;
@@ -54,7 +55,7 @@ public class TestClass {
              * We have already manually specified most of these through the
              * Appium server interface (apk path etc.). */
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("deviceName","Sony C2305");
+        capabilities.setCapability("deviceName","Samsung SM-N9005");
 
             /* We initialize the Appium driver that will connect us to the Android device with
              * the capabilities we have just set. The URL we are providing is telling Appium we
@@ -67,8 +68,15 @@ public class TestClass {
     @Test
     public void testcaseLogin()throws  Exception
     {
+        driver.findElementById("existing_account").click();
+        //Assert.assertTrue(driver.findElements(By.id("login_email")).size() > 0);
+        driver.findElement(By.id("com.example.hassan.outdoor:id/login_email")).sendKeys("test");
+        //driver.findElement(By.xpath("//android.widget.EditText[@text='test']")).click();
+        //driver.findElement(By.xpath("//android.widget.EditText[@text='test']")).click();
+        driver.findElement(By.id("com.example.hassan.outdoor:id/login_password")).sendKeys("test");
         driver.findElementById("login_button").click();
-        Assert.assertTrue(driver.findElementById("profile").isDisplayed());
+        boolean bol = driver.findElement(By.id("username")).isDisplayed();
+        Assert.assertTrue(bol);
     }
 
     @After
